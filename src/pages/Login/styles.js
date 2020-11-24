@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
         letterSpacing: 0.03
     },
     input: {
+        marginTop: 18,
         width: 246,
         height: 50,
         borderColor: 'gray', 
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
         color: "#FFF"
     },
     button: {
-        marginTop: 10,
+        marginTop: 18,
         backgroundColor: '#07617D',
         borderRadius: 5,
         width: 246,
@@ -69,6 +70,17 @@ const styles = StyleSheet.create({
         lineHeight: 25,
         textTransform: "uppercase",
         color: "#FFFFFF"
+    },
+    text: {
+        marginTop: 24, 
+        fontFamily: "Roboto",
+        fontStyle: "normal",
+        fontWeight: "normal",
+        fontSize: 14,
+        lineHeight: 16,
+        display: "flex",
+        alignItems: "center",
+        color: "white",
     }
 
 }
