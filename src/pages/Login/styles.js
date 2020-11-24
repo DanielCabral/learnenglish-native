@@ -1,0 +1,76 @@
+import {StyleSheet} from 'react-native';
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        paddingHorizontal: 24,
+        backgroundColor: '#14213D',
+    },
+    labelContainer: {
+        marginBottom: 20
+    },
+    header: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: '#14213D',
+    },
+    headerImage: {
+        backgroundColor: '#14213D',
+    },
+    grettingsText: {
+        color: '#FFF',
+        fontFamily: 'Roboto',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: 14,
+        lineHeight: 20,
+        /* or 143% */
+
+        display: 'flex',
+        alignItems: 'center',
+        textAlign: 'center',
+        letterSpacing: 0.03
+    },
+    input: {
+        width: 246,
+        height: 50,
+        borderColor: 'gray', 
+        borderWidth: 1,
+        opacity: 0.98,
+
+        fontFamily: "Source Sans Pro",
+        fontStyle: "normal",
+        fontWeight: "normal",
+        fontSize: 17,
+        lineHeight: 21,
+        display: "flex",
+        alignItems: "center",
+        color: "#FFF"
+    },
+    button: {
+        marginTop: 10,
+        backgroundColor: '#07617D',
+        borderRadius: 5,
+        width: 246,
+        height: 48,
+        display: "flex",
+        alignItems: "center",
+        textAlign: "center",
+        justifyContent: "center",
+    },
+    buttonText: {
+        fontFamily: "Source Sans Pro",
+        fontStyle: "normal",
+        fontWeight: "bold",
+        fontSize: 20,
+        lineHeight: 25,
+        textTransform: "uppercase",
+        color: "#FFFFFF"
+    }
+
+}
+);
+export default styles;
