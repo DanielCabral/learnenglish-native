@@ -16,6 +16,7 @@
     "expo-updates": "~0.3.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-feather": "^2.0.9",
     "react-native": "~0.63.3",
     "react-native-gesture-handler": "^1.7.0",
     "react-native-media-controls": "^2.1.0",

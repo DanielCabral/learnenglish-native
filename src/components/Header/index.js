@@ -1,6 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
-
+import { Back, MoreVertical } from 'react-feather';
 import styles from './styles'
 
 import logoImg from '../../assets/logo-white.png';
@@ -8,7 +8,9 @@ import logoImg from '../../assets/logo-white.png';
 export default function Header() {
     return (
         <View style={styles.header}>
-            <Image source={logoImg}/>
+            <Back />
+            <Image source={logoImg} />
+            <MoreVertical />
         </View>
     )
 }
