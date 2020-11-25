@@ -38,8 +38,7 @@ const styles = StyleSheet.create({
         marginTop: 18,
         width: 246,
         height: 50,
-        borderColor: 'gray', 
-        borderWidth: 1,
+        //borderBottom: '5px solid red';
         opacity: 0.98,
 
         fontFamily: "Source Sans Pro",
