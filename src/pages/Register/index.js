@@ -1,26 +1,24 @@
 import React from 'react'
 import { StyleSheet } from 'react-native';
-import { Appbar, Button, DefaultTheme, FAB, HelperText, Provider as PaperProvider, TextInput } from 'react-native-paper';
+import { Appbar, Button, DefaultTheme, FAB, HelperText, Provider as PaperProvider, Searchbar, TextInput } from 'react-native-paper';
+import Header from '../../components/Header';
 
 
 const theme = {
-    ...DefaultTheme,
-    colors: {
-      ...DefaultTheme.colors,
-      primary: 'tomato',
-      accent: 'yellow',
-    },
-  };
+  ...DefaultTheme,
+  roundness: 2,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#14213D',
+    accent: '#07617D',
+  },
+};
 
 export default function Register() {
     return (
         <PaperProvider theme={theme}>
-          <Appbar.Header>
-      <Appbar.BackAction />
-      <Appbar.Content title="Title" subtitle="Subtitle" />
-      <Appbar.Action icon="magnify" />
-      <Appbar.Action icon="dots-vertical" />
-    </Appbar.Header>
+              <Header>
+          </Header> 
           <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
             Press me
           </Button>
@@ -38,6 +36,10 @@ export default function Register() {
           <HelperText type="error">
         Email address is invalid!
       </HelperText>
+      <Searchbar
+      placeholder="Search"
+    
+    />
       </PaperProvider>
     )
 }

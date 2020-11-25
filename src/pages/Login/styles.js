@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
         marginTop: 18,
         width: 246,
         height: 50,
-        //borderBottom: '5px solid red';
+        borderBottomWidth: 1,
+        borderBottomColor: 'white',
         opacity: 0.98,
 
         fontFamily: "Source Sans Pro",
@@ -80,6 +81,10 @@ const styles = StyleSheet.create({
         display: "flex",
         alignItems: "center",
         color: "white",
+    },
+    link: {
+        textDecorationLine: "underline",
+        fontWeight: 'bold',        
     }
 
 }

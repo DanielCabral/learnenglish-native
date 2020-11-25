@@ -45,9 +45,9 @@ cadastre-se e estude de graça com os melhores .</Text>
                 <TouchableOpacity style={styles.button}>
                     <Text style={styles.buttonText}>Login</Text>                
                 </TouchableOpacity>
-                <Text style={styles.text}>Esqueceu a senha?  <Link>Recuperar senha</Link></Text>                
+                <Text style={styles.text}>Esqueceu a senha?  <Link to='/Register' style={styles.link}>Recuperar senha</Link></Text>                
             </View>           
-            <Text style={styles.text}>Não possui uma conta? Cadastre-se</Text>
+            <Text style={styles.text}>Não possui uma conta? <Link to='/Register' style={styles.link}>Cadastre-se</Link></Text> 
         </View>        
 
     );
