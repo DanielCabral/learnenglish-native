@@ -1,16 +1,26 @@
 import React from 'react'
-import { View } from 'react-native'
+
+import { Image, View } from 'react-native'
 import { Back, MoreVertical } from 'react-feather';
 import styles from './styles'
+import { Feather } from '@expo/vector-icons'; 
 
 import logoImg from '../../assets/logo-white.png';
+import { Searchbar } from 'react-native-paper';
 
 export default function Header() {
     return (
-        <View style={styles.header}>
-            <Back />
-            <Image source={logoImg} />
-            <MoreVertical />
+       <View styles={{alignItems: 'center', justifyContent: 'center'}}>
+       <View style={styles.header}>
+            <Feather name="arrow-left" size={24} color="white" />
+            <Image style={{width: 183, height: 64}} source={logoImg} />
+            <Feather name="more-vertical" size={24} color="white" />
+            
+        </View>
+        <Searchbar
+                style={{position: 'absolute', right: 10,alignItems: 'center', justifyContent: 'center',width: 273, height: 34, marginTop: -20}}
+                placeholder="Search"
+            />
         </View>
     )
 }

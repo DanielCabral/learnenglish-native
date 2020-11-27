@@ -8,15 +8,13 @@ import styles from './styles';
 //import api from '../../services/api';
 
 
-export default function Login() {
+export default function AlterPassword() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
     const navigation = useNavigation();
 
-    function navigateToHome(){
-        navigation.navigate('Home');
-    }
+ 
 
     return (
         <View style ={styles.container}>
@@ -30,24 +28,23 @@ cadastre-se e estude de graça com os melhores .</Text>
             <TextInput
             style={styles.input}
             //onChangeText={text => onChangeText(text)}
-            placeholder = 'E-mail'
+            placeholder = 'Senha'
             placeholderTextColor="#FFF" 
             value={''}
+            secureTextEntry={true}
             />
              <TextInput
                 style={styles.input}
                 //onChangeText={text => onChangeText(text)}
-                placeholder = 'Senha'
+                placeholder = 'Confirmação de senha'
                 placeholderTextColor="#FFF" 
                 value={''}
                 secureTextEntry={true}
                 />
-                <TouchableOpacity style={styles.button} onPress={()=> navigateToHome()}>
+                <TouchableOpacity style={styles.button}>
                     <Text style={styles.buttonText}>Login</Text>                
                 </TouchableOpacity>
-                <Text style={styles.text}>Esqueceu a senha?  <Link to='/RecoverPassword' style={styles.link}>Recuperar senha</Link></Text>                
-            </View>           
-            <Text style={styles.text}>Não possui uma conta? <Link to='/Register' style={styles.link}>Cadastre-se</Link></Text> 
+            </View>                       
         </View>        
 
     );

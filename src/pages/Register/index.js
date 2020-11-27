@@ -1,60 +1,70 @@
-import React from 'react'
-import { StyleSheet } from 'react-native';
-import { Appbar, Button, DefaultTheme, FAB, HelperText, Provider as PaperProvider, Searchbar, TextInput } from 'react-native-paper';
-import Header from '../../components/Header';
+import React,{useEffect, useState} from 'react';
+import {Feather} from '@expo/vector-icons';
+import { Link, useNavigation} from '@react-navigation/native';
+import {View , FlatList, Image, Text, TouchableOpacity, TextInput, Button, inputpas, StyleSheet} from 'react-native';
+
+import logoImg from '../../assets/Logo.png';
+import styles from './styles';
+//import api from '../../services/api';
 
 
-const theme = {
-  ...DefaultTheme,
-  roundness: 2,
-  colors: {
-    ...DefaultTheme.colors,
-    primary: '#14213D',
-    accent: '#07617D',
-  },
-};
+export default function Login() {
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
 
-export default function Register() {
+    const navigation = useNavigation();
+
     return (
-        <PaperProvider theme={theme}>
-              <Header>
-          </Header> 
-          <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
-            Press me
-          </Button>
-          <FAB
-            style={styles.fab}
-            small
-            icon="plus"
-            onPress={() => console.log('Pressed')}
-          />
-           <TextInput
-      label="Email"
-      //value={text}
-      //onChangeText={text => setText(text)}
-    />
-          <HelperText type="error">
-        Email address is invalid!
-      </HelperText>
-      <Searchbar
-      placeholder="Search"
-    
-    />
-      </PaperProvider>
-    )
-}
+        <View style ={styles.container}>
+            <View>
+            <Image source={logoImg} styles={styles.headerImage}/>
 
-const styles = StyleSheet.create({
-  bottom: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 0,
-  },
-  fab: {
-    position: 'absolute',
-    margin: 16,
-    right: 0,
-    bottom: 0,
-  },
-});
+            <Text style={styles.grettingsText}>Prencha os campos para finalizar seu registro.</Text>            
+            </View>
+            <View style={styles.form}>
+            <TextInput
+            style={styles.input}
+            //onChangeText={text => onChangeText(text)}
+            placeholder = 'Nome'
+            placeholderTextColor="#FFF" 
+            value={''}
+            />
+            <TextInput
+            style={styles.input}
+            //onChangeText={text => onChangeText(text)}
+            placeholder = 'Telefone '
+            placeholderTextColor="#FFF" 
+            value={''}
+            />
+            <TextInput
+            style={styles.input}
+            //onChangeText={text => onChangeText(text)}
+            placeholder = 'E-mail'
+            placeholderTextColor="#FFF" 
+            value={''}
+            />
+             <TextInput
+                style={styles.input}
+                //onChangeText={text => onChangeText(text)}
+                placeholder = 'Senha'
+                placeholderTextColor="#FFF" 
+                value={''}
+                secureTextEntry={true}
+                />
+              <TextInput
+            style={styles.input}
+            //onChangeText={text => onChangeText(text)}
+            placeholder = 'Confirmação de senha'
+            placeholderTextColor="#FFF" 
+            value={''}
+            secureTextEntry={true}
+            />
+                <TouchableOpacity style={styles.button}>
+                    <Text style={styles.buttonText}>Registrar-se</Text>                
+                </TouchableOpacity>              
+            </View>                   
+        </View>        
+
+    );
+    
+}
