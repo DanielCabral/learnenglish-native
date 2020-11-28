@@ -12,12 +12,15 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     header: {
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
+        width: "100%",
         backgroundColor: '#14213D',
     },
     headerImage: {
+        width: '100%',
+        height: '100%',
         backgroundColor: '#14213D',
     },
     grettingsText: {

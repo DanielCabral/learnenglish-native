@@ -8,19 +8,19 @@ import styles from './styles';
 //import api from '../../services/api';
 
 
-export default function Login() {
+export default function Login({ navigation: { navigate } }) {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
-    const navigation = useNavigation();
+    
 
     function navigateToHome(){
-        navigation.navigate('Home');
+        navigate('Home');
     }
 
     return (
         <View style ={styles.container}>
-            <View>
+            <View style={styles.header}>
             <Image source={logoImg} styles={styles.headerImage}/>
 
             <Text style={styles.grettingsText}>Sejam bem vindo, LearnEnglish
@@ -29,7 +29,7 @@ cadastre-se e estude de graça com os melhores .</Text>
             <View style={styles.form}>
             <TextInput
             style={styles.input}
-            //onChangeText={text => onChangeText(text)}
+              //onChangeText={text => onChangeText(text)}
             placeholder = 'E-mail'
             placeholderTextColor="#FFF" 
             value={''}

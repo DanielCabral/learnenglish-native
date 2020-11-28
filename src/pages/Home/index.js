@@ -14,32 +14,17 @@ const theme = {
   },
 };
 
-export default function Home() {
+export default function Home({ navigation, route }) {
     return (
         <PaperProvider theme={theme}>
-              <Header>
-          </Header> 
-          <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
-            Press me
-          </Button>
+          <Header navigation={navigation}>
+          </Header>           
           <FAB
             style={styles.fab}
             small
             icon="plus"
             onPress={() => console.log('Pressed')}
-          />
-           <TextInput
-      label="Email"
-      //value={text}
-      //onChangeText={text => setText(text)}
-    />
-          <HelperText type="error">
-        Email address is invalid!
-      </HelperText>
-      <Searchbar
-      placeholder="Search"
-    
-    />
+          />           
       </PaperProvider>
     )
 }

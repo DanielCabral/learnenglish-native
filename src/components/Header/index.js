@@ -1,26 +1,41 @@
 import React from 'react'
 
-import { Image, View } from 'react-native'
+import { Button, Image, View } from 'react-native'
 import { Back, MoreVertical } from 'react-feather';
 import styles from './styles'
 import { Feather } from '@expo/vector-icons'; 
 
 import logoImg from '../../assets/logo-white.png';
 import { Searchbar } from 'react-native-paper';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Header() {
+export default function Header({ navigation }) {    
     return (
        <View styles={{alignItems: 'center', justifyContent: 'center'}}>
        <View style={styles.header}>
-            <Feather name="arrow-left" size={24} color="white" />
+            <TouchableOpacity
+                onPress={() => navigation.goBack()}
+                style={{width: 44, height:44}}
+            >
+                <Feather name="arrow-left" size={24} color="white" />
+            </TouchableOpacity>
             <Image style={{width: 183, height: 64}} source={logoImg} />
+            <TouchableOpacity
+                onPress={() => navigation.goBack()}
+                style={{width: 44, height:44}}
+            >
             <Feather name="more-vertical" size={24} color="white" />
+            </TouchableOpacity> 
             
         </View>
-        <Searchbar
-                style={{position: 'absolute', right: 10,alignItems: 'center', justifyContent: 'center',width: 273, height: 34, marginTop: -20}}
+        <View 
+          style={{ flexDirection:'row', alignItems: 'center', justifyContent: 'center',width: 283, height: 40, marginTop: -20}}
+        >
+            <Searchbar              
                 placeholder="Search"
             />
+        </View>        
         </View>
     )
 }
