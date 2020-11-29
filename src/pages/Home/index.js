@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Appbar, Button, DefaultTheme, FAB, HelperText, Provider as PaperProvider, Searchbar, TextInput } from 'react-native-paper';
 import Header from '../../components/Header';
 
@@ -19,12 +19,15 @@ export default function Home({ navigation, route }) {
         <PaperProvider theme={theme}>
           <Header navigation={navigation}>
           </Header>           
+          <View style={styles.container}>
+                       
+          </View>
           <FAB
-            style={styles.fab}
-            small
-            icon="plus"
-            onPress={() => console.log('Pressed')}
-          />           
+              style={styles.fab}
+              small
+              icon="plus"
+              onPress={() => console.log('Pressed')}
+          />
       </PaperProvider>
     )
 }
