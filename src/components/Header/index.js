@@ -16,24 +16,25 @@ export default function Header({ navigation }) {
        <View style={styles.header}>
             <TouchableOpacity
                 onPress={() => navigation.goBack()}
-                style={{width: 44, height:44}}
+                style={{width: 44, height:44, marginLeft:20}}
             >
                 <Feather name="arrow-left" size={24} color="white" />
             </TouchableOpacity>
-            <Image style={{width: 183, height: 64}} source={logoImg} />
+            <Image style={{width: 185, height: 64, justifyContent:"center", alignContent: 'center', marginRight:20}} source={logoImg} />
             <TouchableOpacity
                 onPress={() => navigation.goBack()}
                 style={{width: 44, height:44}}
             >
-            <Feather name="more-vertical" size={24} color="white" />
+            <Feather name="more-vertical" size={24} color="white"/>
             </TouchableOpacity> 
             
         </View>
         <View 
-          style={{ flexDirection:'row', alignItems: 'center', justifyContent: 'center',width: 283, height: 40, marginTop: -20}}
+          style={{ flexDirection:'row', alignItems: 'center', justifyContent: 'center',width: 'auto', marginTop: -20,marginRight: 20, marginLeft:20}}
         >
-            <Searchbar              
-                placeholder="Search"
+            <Searchbar  
+                style={{justifyContent: 'center'}}        
+                placeholder="Pesquisar"
             />
         </View>        
         </View>

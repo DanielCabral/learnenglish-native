@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text, Image,FlatList, TouchableOpacity} from 'react-native';
 import { Appbar, Button, DefaultTheme, FAB, HelperText, Provider as PaperProvider, Searchbar, TextInput } from 'react-native-paper';
 import Header from '../../components/Header';
 
@@ -18,11 +18,33 @@ export default function Home({ navigation, route }) {
     return (
         <PaperProvider theme={theme}>
           <Header navigation={navigation}>
-          </Header>           
+          </Header>              
           <View style={styles.container}>
-                       
+            <Text>Sejam bem vindo, LearnEnglish...</Text>
+            <View>
+              <Text>
+                Iniciante
+              </Text>
+              <Text>
+                Sejam bem vindo, LearnEnglish...
+              </Text>
+              {/* <FlatList
+                renderItem={()=>{
+                return(                <TouchableOpacity>
+                  <Image></Image>
+                  <Text>Saudações</Text>
+                </TouchableOpacity>
+                )
+                }}
+              /> */}
+               <TouchableOpacity>
+                  <Image></Image>
+                  <Text>Saudações</Text>
+                </TouchableOpacity>
+            </View>
+
           </View>
-          <FAB
+          <FAB  
               style={styles.fab}
               small
               icon="plus"
