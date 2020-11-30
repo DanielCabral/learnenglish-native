@@ -9,12 +9,13 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import RecoverPassword from './pages/PasswordRecover';
 import AlterPassword from './pages/AlterPassword';
+import Profile from './pages/Profile';
 
 export default function Routes(){
     return (
         <NavigationContainer>
             <AppStack.Navigator screenOptions={{headerShown: false }}>
-            
+            <AppStack.Screen name = "Profile" component={Profile}/>
             <AppStack.Screen name = "Login" component={Login}/>
             <AppStack.Screen name = "Home" component={Home}/>
             <AppStack.Screen name = "Register" component={Register}/>
