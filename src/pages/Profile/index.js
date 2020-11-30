@@ -82,7 +82,8 @@ export default function Profile({ navigation }) {
               placeholder = 'Nome'
               placeholderTextColor="#FFF" 
               value={''}
-        />
+        /> 
+        
         <TextInput
               style={styles.input}
                 //onChangeText={text => onChangeText(text)}
@@ -101,6 +102,13 @@ export default function Profile({ navigation }) {
               style={styles.input}
                 //onChangeText={text => onChangeText(text)}
               placeholder = 'Senha'
+              placeholderTextColor="#FFF" 
+              value={''}
+        />
+        <TextInput
+              style={styles.input}
+                //onChangeText={text => onChangeText(text)}
+              placeholder = 'Confirmação de Senha'
               placeholderTextColor="#FFF" 
               value={''}
         />
