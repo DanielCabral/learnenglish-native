@@ -2,9 +2,12 @@ import React, {useState} from 'react';
 import {View, TouchableOpacity, Text, StyleSheet, Image} from 'react-native';
 
 import ImagePicker from 'react-native-image-picker';
+import { TextInput } from 'react-native-paper';
 //import Axios from 'axios';
 
-export default function Upload() {
+import Header from '../../components/Header';
+
+export default function Profile({ navigation }) {
   const [avatar, setAvatar] = useState();
 
   const imagePickerOptions = {
@@ -55,11 +58,13 @@ export default function Upload() {
 
   return (
     <View style={styles.container}>
+      <Header navigation={navigation}>
+      </Header> 
       <Image
         source={{
           uri: avatar
             ? avatar.uri
-            : 'https://mltmpgeox6sf.i.optimole.com/w:761/h:720/q:auto/https://redbanksmilesnj.com/wp-content/uploads/2015/11/man-avatar-placeholder.png',
+            : 'https://icons-for-free.com/iconfiles/png/512/box+document+outline+share+top+upload+icon-1320195323221671611.png',
         }}
         style={styles.avatar}
       />
@@ -70,8 +75,40 @@ export default function Upload() {
         }>
         <Text style={styles.buttonText}>Escolher imagem</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={uploadImage}>
-        <Text style={styles.buttonText}>Enviar imagem</Text>
+      <View>
+        <TextInput
+              style={styles.input}
+                //onChangeText={text => onChangeText(text)}
+              placeholder = 'Nome'
+              placeholderTextColor="#FFF" 
+              value={''}
+        />
+        <TextInput
+              style={styles.input}
+                //onChangeText={text => onChangeText(text)}
+              placeholder = 'Telefone'
+              placeholderTextColor="#FFF" 
+              value={''}
+        />
+        <TextInput
+              style={styles.input}
+                //onChangeText={text => onChangeText(text)}
+              placeholder = 'E-mail'
+              placeholderTextColor="#FFF" 
+              value={''}
+        />
+        <TextInput
+              style={styles.input}
+                //onChangeText={text => onChangeText(text)}
+              placeholder = 'Senha'
+              placeholderTextColor="#FFF" 
+              value={''}
+        />
+      </View>
+       <TouchableOpacity
+        style={styles.button}
+        >
+        <Text style={styles.buttonText}>Salvar</Text>
       </TouchableOpacity>
     </View>
   );
@@ -80,21 +117,46 @@ export default function Upload() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignItems: 'center',
   },
-  button: {
-    width: 150,
+  input: {
+    marginTop: 18,
+    width: 246,
     height: 50,
-    borderRadius: 3,
-    backgroundColor: '#7159c1',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  buttonText: {
-    color: '#fff',
-  },
+    borderBottomWidth: 1,
+    borderBottomColor: 'gray',
+    opacity: 0.98,
+
+    fontFamily: "Source Sans Pro",
+    fontStyle: "normal",
+    fontWeight: "normal",
+    fontSize: 17,
+    lineHeight: 21,
+    display: "flex",
+    alignItems: "center",
+    color: "gray"
+},
+button: {
+    marginTop: 18,
+    backgroundColor: '#07617D',
+    borderRadius: 5,
+    width: 246,
+    height: 48,
+    display: "flex",
+    alignItems: "center",
+    textAlign: "center",
+    justifyContent: "center",
+},
+buttonText: {
+    fontFamily: "Source Sans Pro",
+    fontStyle: "normal",
+    fontWeight: "bold",
+    fontSize: 20,
+    lineHeight: 25,
+    textTransform: "uppercase",
+    color: "#FFFFFF"
+},
   avatar: {
     width: 100,
     height: 100,
