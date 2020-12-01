@@ -1,9 +1,12 @@
 import React, {useState} from 'react';
-import {View, TouchableOpacity, Text, StyleSheet, Image} from 'react-native';
+import {View, TouchableOpacity, Text, Image} from 'react-native';
+
 
 import ImagePicker from 'react-native-image-picker';
 import { TextInput } from 'react-native-paper';
 //import Axios from 'axios';
+
+import styles from './styles.js';
 
 import Header from '../../components/Header';
 
@@ -113,61 +116,9 @@ export default function Profile({ navigation }) {
               value={''}
         />
       </View>
-       <TouchableOpacity
-        style={styles.button}
-        >
-        <Text style={styles.buttonText}>Salvar</Text>
+      <TouchableOpacity style={styles.button} onPress={()=> {}}>
+                    <Text style={styles.buttonText}>Salvar</Text>                
       </TouchableOpacity>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-  },
-  input: {
-    marginTop: 18,
-    width: 246,
-    height: 50,
-    borderBottomWidth: 1,
-    borderBottomColor: 'gray',
-    opacity: 0.98,
-
-    fontFamily: "Source Sans Pro",
-    fontStyle: "normal",
-    fontWeight: "normal",
-    fontSize: 17,
-    lineHeight: 21,
-    display: "flex",
-    alignItems: "center",
-    color: "gray"
-},
-button: {
-    marginTop: 18,
-    backgroundColor: '#07617D',
-    borderRadius: 5,
-    width: 246,
-    height: 48,
-    display: "flex",
-    alignItems: "center",
-    textAlign: "center",
-    justifyContent: "center",
-},
-buttonText: {
-    fontFamily: "Source Sans Pro",
-    fontStyle: "normal",
-    fontWeight: "bold",
-    fontSize: 20,
-    lineHeight: 25,
-    textTransform: "uppercase",
-    color: "#FFFFFF"
-},
-  avatar: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-  },
-});
