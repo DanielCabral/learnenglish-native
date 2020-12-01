@@ -12,9 +12,7 @@ const styles = StyleSheet.create({
     },
     title:{
         marginTop: 18,
-        fontFamily: 'Roboto',
-        fontStyle: 'normal',
-        fontWeight: 'normal',
+        fontFamily: 'Roboto-Bold',    
         fontSize: 14,
         lineHeight: 20,
         letterSpacing: 0.03

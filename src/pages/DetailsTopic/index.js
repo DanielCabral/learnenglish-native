@@ -121,7 +121,7 @@ export default function DetailsTopic({ navigation, route }) {
               {                
                   data.map((item,i) => {
                     return (
-                      <TouchableOpacity onPress={() => navigation.navigate('DetailsLesson')}>
+                      <TouchableOpacity key={i} onPress={() => navigation.navigate('DetailsLesson')}>
                       <View style={styles.lesson}>
                        <Text style={styles.nameLesson}>{item.lessonName}</Text>
                        <Text style={

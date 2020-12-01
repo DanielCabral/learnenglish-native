@@ -29,9 +29,8 @@ const styles = StyleSheet.create({
     moduleTitle: {
         height: 32,
 
-        fontFamily: "Pacifico",
-        fontStyle: "normal",
-        fontWeight: "normal",
+        fontFamily: "Pacifico-Regular",
+        
         fontSize: 18,
         lineHeight: 32,
         color: "#000000"

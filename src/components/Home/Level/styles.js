@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start'      
     },
     levelTitle: {
-        fontFamily: "Pacifico",
+        fontFamily: "Pacifico-Regular",
         fontStyle: "normal",
         fontWeight: "normal",
         fontSize: 18,
