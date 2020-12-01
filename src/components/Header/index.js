@@ -22,7 +22,7 @@ export default function Header({ navigation }) {
             </TouchableOpacity>
             <Image style={{width: 185, height: 64, justifyContent:"center", alignContent: 'center', marginRight:20}} source={logoImg} />
             <TouchableOpacity
-                onPress={() => navigation.goBack()}
+                onPress={() => navigation.navigate("Profile")}
                 style={{width: 44, height:44}}
             >
             <Feather name="more-vertical" size={24} color="white"/>

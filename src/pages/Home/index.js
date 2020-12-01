@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, Text, Image,FlatList, TouchableOpacity} from 'react-native';
+import { StyleSheet, View, Text, Image,FlatList, TouchableOpacity, ScrollView} from 'react-native';
 import { Appbar, Button, Card, DefaultTheme, FAB, HelperText, Provider as PaperProvider, Searchbar, TextInput } from 'react-native-paper';
 import Header from '../../components/Header';
 import Level from '../../components/Home/Level';
@@ -48,7 +48,8 @@ export default function Home({ navigation, route }) {
     return (
         <PaperProvider theme={theme}>
           <Header navigation={navigation}>
-          </Header>              
+          </Header>  
+          <ScrollView>
           <View style={styles.container}>
             <View style={styles.titleView}>
               <Text style={styles.title}>Sejam bem vindo, LearnEnglish...</Text>
@@ -57,6 +58,7 @@ export default function Home({ navigation, route }) {
             <Level navigation={navigation} title="Intermediario" data={data}/>
             <Level navigation={navigation} title="Avançado" data={data}/>
           </View>
+          </ScrollView>            
       </PaperProvider>
     )
 }
