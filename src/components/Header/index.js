@@ -18,7 +18,7 @@ export default function Header({ navigation }) {
                 onPress={() => navigation.goBack()}
                 style={{width: 44, height:44, marginLeft:20}}
             >
-                <Feather name="arrow-left" size={24} color="white" />
+                <Feather name="chevron-left" size={24} color="white" />
             </TouchableOpacity>
             <Image style={{width: 185, height: 64, justifyContent:"center", alignContent: 'center', marginRight:20}} source={logoImg} />
             <TouchableOpacity

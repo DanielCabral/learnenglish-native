@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, Image, Button} from 'react-native';
-import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import { FlatList, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 import Header from '../../components/Header';
 import Level from '../../components/Home/Level';
@@ -112,15 +112,16 @@ export default function DetailsTopic({ navigation, route }) {
                 source={{ uri: "https://conteudo.imguol.com.br/c/entretenimento/02/2018/07/20/leonard-nimoy-como-spock-na-serie-star-trek-1532124514829_v2_450x337.png" }}                      
               />
               <Text style={styles.title}>Sejam bem vindo, LearnEnglish...</Text>
-            </View>
+            </View>            
             <View style={styles.module}>
               <Text style={styles.moduleTitle}>
                 Future
               </Text>
               <View>              
-              {
+              {                
                   data.map((item,i) => {
                     return (
+                      <TouchableOpacity onPress={() => navigation.navigate('DetailsLesson')}>
                       <View style={styles.lesson}>
                        <Text style={styles.nameLesson}>{item.lessonName}</Text>
                        <Text style={
@@ -140,11 +141,12 @@ export default function DetailsTopic({ navigation, route }) {
                         }
                        </Text>
                       </View>
+                      </TouchableOpacity>
                       );
                   })
                 }                  
               </View>
-            </View>
+            </View>            
           </View>
           </ScrollView>
       </PaperProvider>

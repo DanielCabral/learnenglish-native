@@ -17,9 +17,7 @@ import Player from './pages/Player';
 export default function Routes(){
     return (
         <NavigationContainer>
-            <AppStack.Navigator screenOptions={{headerShown: false }}>            
-            <AppStack.Screen name = "Player" component={Player}/>
-            <AppStack.Screen name = "DetailsLesson" component={DetailsLesson}/>
+            <AppStack.Navigator screenOptions={{headerShown: false }}>                        
             <AppStack.Screen name = "Login" component={Login}/>
             <AppStack.Screen name = "Home" component={Home}/>
             <AppStack.Screen name = "Register" component={Register}/>
@@ -27,6 +25,8 @@ export default function Routes(){
             <AppStack.Screen name = "RecoverPassword" component={RecoverPassword}/>
             <AppStack.Screen name = "Profile" component={Profile}/>
             <AppStack.Screen name = "DetailsTopic" component={DetailsTopic}/>
+            <AppStack.Screen name = "Player" component={Player}/>
+            <AppStack.Screen name = "DetailsLesson" component={DetailsLesson}/>
 
             </AppStack.Navigator>
         </NavigationContainer>
