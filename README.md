@@ -16,7 +16,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/DanielCabral/learnenglish-native">
+  <a href="https://danielcabral.github.io/learnenglish-native/">
     <img src="https://i.postimg.cc/FRCpWc1x/Group-34.png" alt="Logo">
   </a>
 
