@@ -19,22 +19,6 @@ const styles = StyleSheet.create({
         lineHeight: 20,
         letterSpacing: 0.03
     },
-    level:{
-        flex: 1,
-        alignItems: 'flex-start',  
-        justifyContent: 'flex-start'      
-    },
-    levelTitle: {
-        fontFamily: "Pacifico",
-        fontStyle: "normal",
-        fontWeight: "normal",
-        fontSize: 18,
-        lineHeight: 32,
-        color: "#000000"
-    },
-    levelSubTitle: {
-
-    }
 }
 );
 export default styles;

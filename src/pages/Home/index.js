@@ -1,7 +1,8 @@
 import React from 'react'
 import { StyleSheet, View, Text, Image,FlatList, TouchableOpacity} from 'react-native';
-import { Appbar, Button, DefaultTheme, FAB, HelperText, Provider as PaperProvider, Searchbar, TextInput } from 'react-native-paper';
+import { Appbar, Button, Card, DefaultTheme, FAB, HelperText, Provider as PaperProvider, Searchbar, TextInput } from 'react-native-paper';
 import Header from '../../components/Header';
+import Level from '../../components/Home/Level';
 
 
 const theme = {
@@ -52,52 +53,10 @@ export default function Home({ navigation, route }) {
             <View style={styles.titleView}>
               <Text style={styles.title}>Sejam bem vindo, LearnEnglish...</Text>
             </View>
-            <View style={styles.level}>
-              <Text style={styles.levelTitle}>
-                Iniciante
-              </Text>
-              <Text style={styles.levelSubTitle}>
-                Sejam bem vindo, LearnEnglish...
-              </Text>
-              {/* <FlatList
-                renderItem={()=>{
-                return(                <TouchableOpacity>
-                  <Image></Image>
-                  <Text>Saudações</Text>
-                </TouchableOpacity>
-                )
-                }}
-              /> */}
-              <FlatList
-                data={data}
-                renderItem={({ item: rowData }) => {
-                  return (
-                    <Card
-                      title={null}
-                      image={{ uri: "http://via.placeholder.com/160x160" }}
-                      containerStyle={{ padding: 0, width: 160 }}
-                    >
-                      <Text style={{ marginBottom: 10 }}>
-                        hello
-                      </Text>
-                    </Card>
-                  );
-                }}
-                keyExtractor={(item, index) => index}
-              />
-               <TouchableOpacity>
-                  <Image></Image>
-                  <Text>Saudações</Text>
-                </TouchableOpacity>
-            </View>
-
+            <Level navigation={navigation} title="Iniciante" data={data}/>
+            <Level navigation={navigation} title="Intermediario" data={data}/>
+            <Level navigation={navigation} title="Avançado" data={data}/>
           </View>
-          <FAB  
-              style={styles.fab}
-              small
-              icon="plus"
-              onPress={() => console.log('Pressed')}
-          />
       </PaperProvider>
     )
 }
