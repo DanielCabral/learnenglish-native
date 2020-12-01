@@ -1,45 +1,54 @@
 const { StyleSheet } = require("react-native");
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'flex-start',
-      alignItems: 'center',
-    },
+
     avatar: {
-      width: 100,
-      height: 100,
-      borderRadius: 50,
+      width: 130,
+      height: 130,
+      borderRadius: 65,
     },    
-    input: {
-      backgroundColor: 'red',
-      marginTop: 18,
-      width: 246,
-      height: 50,
-      borderBottomWidth: 1,
-      borderBottomColor: 'gray',
-      opacity: 0.98,
-  
-      fontFamily: "Source Sans Pro",
-      fontStyle: "normal",
-      fontWeight: "normal",
-      fontSize: 17,
-      lineHeight: 21,
-      display: "flex",
+  btnCam: {
+      marginTop: -25,
+      marginLeft: 65,
+      backgroundColor: '#292929',
+      opacity: 0.4,
+      borderRadius: 20,
+      width: 40,
+      height: 40,
       alignItems: "center",
-      color: "gray"
-  },
-  button: {
-      marginTop: 18,
-      backgroundColor: '#07617D',
-      borderRadius: 5,
-      width: 246,
-      height: 48,
-      display: "flex",
-      alignItems: "center",
-      textAlign: "center",
       justifyContent: "center",
   },
+  btncamIcon: {
+    opacity: 0.8,
+  },
+  
+  input: {
+    marginTop: 18,
+    width: 246,
+    height: 50,
+    borderBottomWidth: 1,
+    borderBottomColor: "#000",
+
+    fontFamily: "Source Sans Pro",
+    fontStyle: "normal",
+    fontWeight: "normal",
+    fontSize: 17,
+    backgroundColor:"#F4F6F8",  
+    lineHeight: 21,
+},
+
+  button: {
+    marginTop: 18,
+    backgroundColor: '#07617D',
+    borderRadius: 5,
+    width: 246,
+    height: 48,
+    display: "flex",
+    alignItems: "center",
+    textAlign: "center",
+    justifyContent: "center",
+  },
+
   buttonText: {
       fontFamily: "Source Sans Pro",
       fontStyle: "normal",
