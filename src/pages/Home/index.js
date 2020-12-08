@@ -1,4 +1,5 @@
-import React from 'react'
+import Axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, View, Text, Image,FlatList, TouchableOpacity, ScrollView} from 'react-native';
 import { Appbar, Button, Card, DefaultTheme, FAB, HelperText, Provider as PaperProvider, Searchbar, TextInput } from 'react-native-paper';
 import Header from '../../components/Header';
@@ -18,6 +19,18 @@ const theme = {
 import styles from './styles';
 
 export default function Home({ navigation, route }) {
+  const [starter, setStarter] = useState([]);
+  const [intermediate, setIntermediate] = useState([])
+  const [advanced, setAdvanced] = useState([])
+  useEffect(() => {
+    async function carregarModulos(){
+      const result = await Axios.get('https://api-learnenglish.herokuapp.com/modules');
+      setStarter(result.data.filter((item) => item.level === '0'))      
+      setIntermediate(result.data.filter((item) => item.level === '1'))
+      setAdvanced(result.data.filter((item) => item.level === '2'))
+    }
+    carregarModulos();
+  },[])
   const data = [
     {
       imageUrl: "http://via.placeholder.com/160x160",
@@ -54,9 +67,9 @@ export default function Home({ navigation, route }) {
             <View style={styles.titleView}>
               <Text style={styles.title}>Sejam bem vindo, LearnEnglish...</Text>
             </View>
-            <Level navigation={navigation} title="Iniciante" data={data}/>
-            <Level navigation={navigation} title="Intermediario" data={data}/>
-            <Level navigation={navigation} title="Avançado" data={data}/>
+            <Level navigation={navigation} title="Iniciante" data={starter}/>
+            <Level navigation={navigation} title="Intermediario" data={intermediate}/>
+            <Level navigation={navigation} title="Avançado" data={advanced}/>
           </View>
           </ScrollView>            
       </PaperProvider>

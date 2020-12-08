@@ -5,7 +5,7 @@ import { Feather } from '@expo/vector-icons';
 
 import ImagePicker from 'react-native-image-picker';
 import { TextInput } from 'react-native-paper';
-//import Axios from 'axios';
+import Axios from 'axios';
 
 import styles from './styles.js';
 
@@ -74,8 +74,9 @@ export default function Profile({ navigation }) {
               onPress={() =>
                 ImagePicker.showImagePicker(imagePickerOptions, imagePickerCallback)
               }>
+                <Feather style={styles.btnCamIcon} name="camera" size={24} color="#FFFFFF" />
             </TouchableOpacity>
-            <Feather style={styles.btnCamIcon} name="camera" size={24} color="#FFFFFF" />
+            
           </View>
         </View>
         <View style={{

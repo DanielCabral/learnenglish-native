@@ -11,13 +11,16 @@ const styles = StyleSheet.create({
     labelContainer: {
         marginBottom: 20
     },
-    header: {
-        flexDirection: 'row',
+    header: {        
+        flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
+        width: "100%",
         backgroundColor: '#14213D',
     },
     headerImage: {
+        width: '100%',
+        height: '100%',
         backgroundColor: '#14213D',
     },
     grettingsText: {
@@ -33,6 +36,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         textAlign: 'center',
         letterSpacing: 0.03
+    },
+    form: {        
+        alignItems: 'center',        
+        backgroundColor: 'red',
     },
     input: {
         marginTop: 18,
