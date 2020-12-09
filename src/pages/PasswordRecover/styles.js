@@ -38,8 +38,7 @@ const styles = StyleSheet.create({
         letterSpacing: 0.03
     },
     form: {        
-        alignItems: 'center',        
-        backgroundColor: 'red',
+        alignItems: 'center',                
     },
     input: {
         marginTop: 18,

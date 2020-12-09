@@ -1,21 +1,58 @@
 import React,{useEffect, useState} from 'react';
 import {Feather} from '@expo/vector-icons';
 import { Link, useNavigation} from '@react-navigation/native';
-import {View , FlatList, Image, Text, TouchableOpacity, TextInput, Button, inputpas, StyleSheet} from 'react-native';
+import {View , FlatList, Image, Text, TouchableOpacity, TextInput, Button, inputpas, StyleSheet, Alert} from 'react-native';
 
 import logoImg from '../../assets/Logo.png';
 import styles from './styles';
+import Axios from 'axios';
 //import api from '../../services/api';
 
 
 export default function Login({ navigation: { navigate } }) {
     const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
+    const [password, setPassword] = useState('');
 
     
 
-    function navigateToHome(){
+    async function navigateToHome(){
+        if(email === '' && password === ''){
+            Alert.alert(
+                "Erro",
+                "Campos vazios",
+                [
+                  {
+                    text: "",
+                    onPress: () => console.log("")
+                  },                  
+                  { text: "OK", onPress: () => {
+                    
+                  } }
+                ],
+                { cancelable: false }
+              );
+            return;
+        }
+        const result = await Axios.get('https://api-learnenglish.herokuapp.com/auth', { email, password})
+        alert(JSON.stringify(result))
+        if(result.status !== 200)
         navigate('Home');
+        /*else{
+            Alert.alert(
+                "Erro",
+                "Email ou senha incorretos",
+                [
+                  {
+                    text: "",
+                    onPress: () => console.log("")
+                  },                  
+                  { text: "OK", onPress: () => {
+                    
+                  } }
+                ],
+                { cancelable: false }
+              );*/
+        //}        
     }
 
     return (
@@ -29,17 +66,17 @@ cadastre-se e estude de graça com os melhores .</Text>
             <View style={styles.form}>
             <TextInput
             style={styles.input}
-              //onChangeText={text => onChangeText(text)}
+            onChangeText={text => setEmail(text)}
             placeholder = 'E-mail'
             placeholderTextColor="#FFF" 
-            value={''}
+            value={email}
             />
              <TextInput
                 style={styles.input}
-                //onChangeText={text => onChangeText(text)}
-                placeholder = 'Senha'
+                onChangeText={text => setPassword(text)}
+                placeholder = 'password'
                 placeholderTextColor="#FFF" 
-                value={''}
+                value={password}
                 secureTextEntry={true}
                 />
                 <TouchableOpacity style={styles.button} onPress={()=> navigateToHome()}>

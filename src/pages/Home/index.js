@@ -67,9 +67,9 @@ export default function Home({ navigation, route }) {
             <View style={styles.titleView}>
               <Text style={styles.title}>Sejam bem vindo, LearnEnglish...</Text>
             </View>
-            <Level navigation={navigation} title="Iniciante" data={starter}/>
-            <Level navigation={navigation} title="Intermediario" data={intermediate}/>
-            <Level navigation={navigation} title="Avançado" data={advanced}/>
+            <Level navigation={navigation} title="Iniciante" data={data}/>
+            <Level navigation={navigation} title="Intermediario" data={data}/>
+            <Level navigation={navigation} title="Avançado" data={data}/>
           </View>
           </ScrollView>            
       </PaperProvider>
