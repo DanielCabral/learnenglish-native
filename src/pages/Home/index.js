@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, View, Text, Image,FlatList, TouchableOpacity, ScrollView} from 'react-native';
-import { Appbar, Button, Card, DefaultTheme, FAB, HelperText, Provider as PaperProvider, Searchbar, TextInput } from 'react-native-paper';
+import { ActivityIndicator, Appbar, Button, Card, DefaultTheme, FAB, HelperText, Provider as PaperProvider, Searchbar, TextInput } from 'react-native-paper';
 import Header from '../../components/Header';
 import Level from '../../components/Home/Level';
 
@@ -24,10 +24,13 @@ export default function Home({ navigation, route }) {
   const [advanced, setAdvanced] = useState([])
   useEffect(() => {
     async function carregarModulos(){
-      const result = await Axios.get('https://api-learnenglish.herokuapp.com/modules');
-      setStarter(result.data.filter((item) => item.level === '0'))      
-      setIntermediate(result.data.filter((item) => item.level === '1'))
-      setAdvanced(result.data.filter((item) => item.level === '2'))
+      const result = await Axios.get('https://api-learnenglish.herokuapp.com/modules')
+      .then((res) => {
+        setStarter(res.data.filter((item) => item.level === '0'))      
+      setIntermediate(res.data.filter((item) => item.level === '1'))
+      setAdvanced(res.data.filter((item) => item.level === '2'))      
+      });
+      
     }
     carregarModulos();
   },[])
@@ -57,7 +60,22 @@ export default function Home({ navigation, route }) {
       title: "something six"
     }
   ];
-
+    if(starter.length === 0){
+      return(
+        <PaperProvider theme={theme}>
+          <Header navigation={navigation}>
+          </Header> 
+          <View style={{
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center'
+          }
+        }>
+            <ActivityIndicator color='#2E383F'style={{transform: [{scale: 2.0}]}} size="large"/>
+          </View>          
+      </PaperProvider>        
+      )
+    }
     return (
         <PaperProvider theme={theme}>
           <Header navigation={navigation}>
@@ -67,9 +85,9 @@ export default function Home({ navigation, route }) {
             <View style={styles.titleView}>
               <Text style={styles.title}>Sejam bem vindo, LearnEnglish...</Text>
             </View>
-            <Level navigation={navigation} title="Iniciante" data={data}/>
-            <Level navigation={navigation} title="Intermediario" data={data}/>
-            <Level navigation={navigation} title="Avançado" data={data}/>
+            <Level navigation={navigation} title="Iniciante" data={starter}/>
+            <Level navigation={navigation} title="Intermediario" data={intermediate}/>
+            <Level navigation={navigation} title="Avançado" data={advanced}/>
           </View>
           </ScrollView>            
       </PaperProvider>

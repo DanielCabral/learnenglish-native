@@ -23,10 +23,11 @@ export default function Level({ navigation, data, title }) {
               marginTop: 18,
             }
           }
-          renderItem={({ item: rowData }) => {
+          keyExtractor={(item, index) => item.id.toString()}
+          renderItem={({ item }) => {
             return (
               <View style={styles.module}>
-              <TouchableOpacity onPress={() => navigation.navigate('DetailsTopic')}>
+              <TouchableOpacity onPress={() => navigation.navigate('DetailsTopic',{id: item.id})}>
               <Image
                 style={
                   {
@@ -40,7 +41,7 @@ export default function Level({ navigation, data, title }) {
               />
               </TouchableOpacity>
                <Text style={{ marginRight: 15, marginTop: 3 }}>
-               Saudações
+               {item.title}
              </Text>
              </View>
             );

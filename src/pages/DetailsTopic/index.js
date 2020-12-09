@@ -1,5 +1,6 @@
-import React from 'react'
-import { View, Text, Image, Button} from 'react-native';
+import Axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { View, Text, Image, Button, ActivityIndicator} from 'react-native';
 import { FlatList, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 import Header from '../../components/Header';
@@ -18,6 +19,17 @@ const theme = {
 import styles from './styles';
 
 export default function DetailsTopic({ navigation, route }) {
+  const [lessons, setLessons] = useState([])
+  useEffect(() => {
+    async function carregarModulos(){          
+      const result = await Axios.get('http://10.0.2.2:3333/lesson/'+route.params.id)
+      .then((res) => {        
+        if(res.data.length > 0)
+        setLessons(res.data)
+      });     
+    }
+    carregarModulos();
+  },[])
   const data = [
     {
       lessonName: "Aula 01 - Dias da semana",
@@ -92,7 +104,22 @@ export default function DetailsTopic({ navigation, route }) {
       lessonStatus: 2
     }
   ];
-
+    if(lessons.length === 0){
+      return(
+        <PaperProvider theme={theme}>
+          <Header navigation={navigation}>
+          </Header> 
+          <View style={{
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center'
+          }
+        }>
+            <ActivityIndicator color='#2E383F'style={{transform: [{scale: 2.0}]}} size="large"/>
+          </View>          
+      </PaperProvider>        
+      )
+    }else{
     return (
         <PaperProvider theme={theme}>
           <Header navigation={navigation}>
@@ -119,23 +146,23 @@ export default function DetailsTopic({ navigation, route }) {
               </Text>
               <View>              
               {                
-                  data.map((item,i) => {
+                  lessons.map((item,i) => {
                     return (
-                      <TouchableOpacity key={i} onPress={() => navigation.navigate('DetailsLesson')}>
+                      <TouchableOpacity key={i} onPress={() => navigation.navigate('DetailsLesson', {id: item.id})}>
                       <View style={styles.lesson}>
-                       <Text style={styles.nameLesson}>{item.lessonName}</Text>
+                       <Text style={styles.nameLesson}>{item.title}</Text>
                        <Text style={
                          styles.statusLesson, 
-                         item.lessonStatus === 0 ?
+                         item.id === 0 ?
                           styles.finalizada :
-                          item.lessonStatus === 1 ?
+                          item.id === 1 ?
                           styles.andamento : 
                           styles.naoiniciada
                           }>
                          {
-                          item.lessonStatus === 0 ?
+                          item.id === 0 ?
                           "Finalizada":
-                          item.lessonStatus === 1 ?
+                          item.id === 1 ?
                           "Em andamento":
                           "Não iniciado"
                         }
@@ -151,4 +178,5 @@ export default function DetailsTopic({ navigation, route }) {
           </ScrollView>
       </PaperProvider>
     )
+    }
 }

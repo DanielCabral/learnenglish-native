@@ -16,7 +16,9 @@ export default function Login({ navigation: { navigate } }) {
     
 
     async function navigateToHome(){
-        if(email === '' && password === ''){
+        navigate('Home'); 
+        return;
+        if(email === '' || password === ''){
             Alert.alert(
                 "Erro",
                 "Campos vazios",
@@ -33,11 +35,11 @@ export default function Login({ navigation: { navigate } }) {
               );
             return;
         }
-        const result = await Axios.get('https://api-learnenglish.herokuapp.com/auth', { email, password})
-        alert(JSON.stringify(result))
-        if(result.status !== 200)
-        navigate('Home');
-        /*else{
+        const result = await Axios.post('http://10.0.2.2:3333/auth', {email, password})
+        .then(result => {            
+                navigate('Home');            
+        })
+        .catch(err => {            
             Alert.alert(
                 "Erro",
                 "Email ou senha incorretos",
@@ -51,8 +53,9 @@ export default function Login({ navigation: { navigate } }) {
                   } }
                 ],
                 { cancelable: false }
-              );*/
-        //}        
+              );
+  
+        })        
     }
 
     return (
