@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Button, Image, View } from 'react-native'
 import { Back, MoreVertical } from 'react-feather';
@@ -10,7 +10,8 @@ import { Searchbar } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 
-export default function Header({ navigation }) {    
+export default function Header({ navigation }) {
+    const [searchText, setSearchText] = useState('');    
     return (
        <View styles={{alignItems: 'center', justifyContent: 'center'}}>
        <View style={styles.header}>
@@ -35,6 +36,11 @@ export default function Header({ navigation }) {
             <Searchbar  
                 style={{justifyContent: 'center'}}        
                 placeholder="Pesquisar"
+                onIconPress={() => navigation.navigate('Search', {search: searchText})}
+                onChangeText={(item) => {
+                    setSearchText(item)
+                }}
+                value={searchText}
             />
         </View>        
         </View>

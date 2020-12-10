@@ -1,11 +1,12 @@
 import React from 'react'
+import { Feather } from '@expo/vector-icons';
 import { Image, Text, View } from 'react-native';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 
 
 import styles from './styles';
 
-export default function Level({ navigation, data, title }) {
+export default function Level({ navigation, data, title, admin, id}) {
     return (
         <View style={styles.level}>
         <Text style={styles.levelTitle}>
@@ -23,11 +24,45 @@ export default function Level({ navigation, data, title }) {
               marginTop: 18,
             }
           }
-          keyExtractor={(item, index) => item.id.toString()}
-          renderItem={({ item }) => {
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item, index }) => {
+            if( index === 0 && admin){
+              return(
+                <View style={styles.module}>
+              <TouchableOpacity onPress={() => alert("Add")}>
+              <View
+                style={
+                  {
+                    width: 70,
+                    height: 70,
+                    borderRadius: 70/2,
+                    marginRight: 15,      
+                    borderColor: "#ccc",      
+                    borderWidth: 1,            
+                    backgroundColor: "#fff",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }
+                }
+              >
+                <Feather                            name="plus" size={24} color="black" />
+              </View>
+              </TouchableOpacity>
+               <Text style={{ marginRight: 15, marginTop: 3 }}>
+               Add
+             </Text>
+             </View>
+              );
+            }
+            else{
             return (
               <View style={styles.module}>
-              <TouchableOpacity onPress={() => navigation.navigate('DetailsTopic',{id: item.id})}>
+              <TouchableOpacity onPress={() => navigation.navigate('DetailsTopic',{id: item.id})}
+                onLongPress={() => {
+                  if(admin)
+                    alert('Delete')
+                }}
+              >
               <Image
                 style={
                   {
@@ -45,6 +80,7 @@ export default function Level({ navigation, data, title }) {
              </Text>
              </View>
             );
+            }
           }}
           keyExtractor={(item, index) => index}
         />

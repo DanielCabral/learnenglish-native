@@ -13,6 +13,9 @@ import Profile from './pages/Profile';
 import DetailsTopic from './pages/DetailsTopic';
 import DetailsLesson from './pages/DetailsLesson';
 import Player from './pages/Player';
+import Search from './pages/Search';
+
+import HomeAdmin from './pages/HomeAdmin';
 
 export default function Routes(){
     return (
@@ -27,7 +30,9 @@ export default function Routes(){
             <AppStack.Screen name = "DetailsTopic" component={DetailsTopic}/>
             <AppStack.Screen name = "Player" component={Player}/>
             <AppStack.Screen name = "DetailsLesson" component={DetailsLesson}/>
+            <AppStack.Screen name = "Search" component={Search}/>
 
+            <AppStack.Screen name = "HomeAdmin" component={HomeAdmin}/>
             </AppStack.Navigator>
         </NavigationContainer>
     )
