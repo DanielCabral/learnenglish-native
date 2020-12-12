@@ -6,10 +6,19 @@ import play from '../../assets/play.png';
 import styles from './styles';
 import { Feather } from '@expo/vector-icons';
 import ImageBackground from 'react-native/Libraries/Image/ImageBackground';
+import Axios from 'axios';
 //import api from '../../services/api';
 
 
-export default function DetailsLesson({ navigation }) {
+export default function DetailsLesson({ navigation , route }) {
+
+    const idLesson =  route.params.id ;
+    alert(idLesson);
+    const lessons = route.params.lessons;
+
+    const atualLesson = lessons[idLesson];
+    const backLesson = lessons[idLesson - 1];
+    const nextLesson = lessons[idLesson + 1];
     return (
         <View style ={styles.container}>
             <View>            
@@ -22,9 +31,9 @@ export default function DetailsLesson({ navigation }) {
                     justifyContent: 'center'                     
                   }
                 }
-                source={{ uri: "https://conteudo.imguol.com.br/c/entretenimento/02/2018/07/20/leonard-nimoy-como-spock-na-serie-star-trek-1532124514829_v2_450x337.png" }}                      
+                source={{ uri: atualLesson.thumbnail}}                      
               >
-                    <TouchableOpacity onPress={() => navigation.navigate('Player') }> 
+                    <TouchableOpacity onPress={() => navigation.navigate('Player',{uri: lesson.link}) }> 
                         <Image source={play}/>
                     </TouchableOpacity>
               </ImageBackground>
@@ -42,24 +51,44 @@ export default function DetailsLesson({ navigation }) {
             </TouchableOpacity>                        
             </View>
             <View style={styles.buttonsView}>
-                <TouchableOpacity style={styles.button}>                
+                <TouchableOpacity 
+                    disabled={backLesson === undefined ? true : false} 
+                    onPress={() => navigation.navigate('DetailsLesson', 
+                                  {
+                                    lessons: lessons, 
+                                    id: idLesson-1
+                                  }
+                                )}
+                    style={ backLesson === undefined ? styles.buttonDisabled: styles.button }
+                >                
                     <Feather name="arrow-left" size={20} color="white" />
                     <Text style={styles.text}>Aula Anterior</Text>                
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.button}>                
+                <TouchableOpacity 
+                style={  styles.buttonDisabled }
+                disabled={true}>                
                     <Feather name="message-circle" size={20} color="white" />
                     <Text style={styles.text}>Forúm  da Aula</Text>            
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.button}>                
-                    <Feather name="arrow-right" size={20} color="white" />
-                    <Text style={styles.text}>Próxima Aula</Text>                
+                <TouchableOpacity 
+                    disabled={nextLesson === undefined ? true : false} 
+                    onPress={() => navigation.navigate('DetailsLesson', 
+                                  {
+                                    lessons: lessons, 
+                                    id: idLesson+1
+                                  }
+                                )}
+                    style={ nextLesson === undefined ? styles.buttonDisabled : styles.button }
+                >                
+                    <Text style={styles.text}>Próxima Aula</Text>  
+                    <Feather name="arrow-right" size={20} color="white" />              
                 </TouchableOpacity>
             </View>
             <View style={styles.description}>
                 <View style={styles.titleAndProfile}>
-                    <Text style={styles.title}>Aula 01 - The Stonehenge Legacy</Text>
+                    <Text style={styles.title}>{atualLesson.title}</Text>
                     <TouchableOpacity style={styles.profile}>
                         <Text style={styles.title}>Jose Luiz</Text>
                         <Image style={styles.imageProfile} source={{uri: 'https://png.pngtree.com/png-clipart/20190619/original/pngtree-vector-avatar-icon-png-image_4013519.jpg'}}/>
@@ -67,7 +96,7 @@ export default function DetailsLesson({ navigation }) {
                 </View>
                 <View>
                     <Text style={styles.textDescription}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consequat vitae elit et morbi at libero id. Purus pellentesque tristique nulla morbi aliquet dignissim non. Adipiscing purus adipiscing ullamcorper sociis luctus. Enim non non, condimentum elementum feugiat arcu nisl.
+                    {atualLesson.description}
                     </Text>
                 </View>
             </View>

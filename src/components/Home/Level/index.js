@@ -57,7 +57,7 @@ export default function Level({ navigation, data, title, admin, id}) {
             else{
             return (
               <View style={styles.module}>
-              <TouchableOpacity onPress={() => navigation.navigate('DetailsTopic',{id: item.id})}
+              <TouchableOpacity onPress={() => navigation.navigate('DetailsTopic', {id: item.id})}
                 onLongPress={() => {
                   if(admin)
                     alert('Delete')

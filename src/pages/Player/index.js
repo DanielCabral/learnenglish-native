@@ -12,7 +12,7 @@ import
   MediaControls, {PLAYER_STATES}
 from 'react-native-media-controls';
 
-const Player = () => {
+const Player = ({route}) => {
   const videoPlayer = useRef(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -65,7 +65,7 @@ const Player = () => {
 
   const enterFullScreen = () => {};
 
-  const onFullScreen = () => {
+  const noop = () => {
     setIsFullScreen(isFullScreen);
     if (screenType == 'content') setScreenType('cover');
     else setScreenType('content');
@@ -89,6 +89,7 @@ const Player = () => {
         paused={paused}
         ref={videoPlayer}
         resizeMode={screenType}
+        isFullScreen={true}
         onFullScreen={isFullScreen}
         source={{
           uri:
@@ -103,7 +104,8 @@ const Player = () => {
         duration={duration}
         isLoading={isLoading}
         mainColor="#333"
-        onFullScreen={onFullScreen}
+        isFullScreen={true}
+        onFullScreen={noop}
         onPaused={onPaused}
         onReplay={onReplay}
         onSeek={onSeek}

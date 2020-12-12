@@ -20,6 +20,8 @@ import styles from './styles';
 
 export default function DetailsTopic({ navigation, route }) {
   const [lessons, setLessons] = useState([])
+  const [module, setModule] = useState({})
+  
   useEffect(() => {
     async function carregarModulos(){          
       const result = await Axios.get('http://10.0.2.2:3333/lesson/'+route.params.id)
@@ -27,83 +29,15 @@ export default function DetailsTopic({ navigation, route }) {
         if(res.data.length > 0)
         setLessons(res.data)
       });     
+      await Axios.get('http://10.0.2.2:3333/module/'+route.params.id)
+      .then((res) => {        
+        if(res.data.length > 0)
+        setModule(res.data[0])
+      });     
     }
     carregarModulos();
   },[])
-  const data = [
-    {
-      lessonName: "Aula 01 - Dias da semana",
-      lessonStatus: 0
-    },
-    {
-      lessonName: "Aula 02 - Números",
-      lessonStatus: 0
-    },
-    {
-      lessonName: "Aula 03 - Meses",
-      lessonStatus: 1
-    },
-    {
-      lessonName: "Aula 04- Feriados",
-      lessonStatus: 1
-    },
-    {
-      lessonName: "Aula 05 - Any",
-      lessonStatus: 2
-    },
-    {
-      lessonName: "Aula 06 - Words basics",
-      lessonStatus: 2
-    },
-    {
-      lessonName: "Aula 01 - Dias da semana",
-      lessonStatus: 0
-    },
-    {
-      lessonName: "Aula 02 - Números",
-      lessonStatus: 0
-    },
-    {
-      lessonName: "Aula 03 - Meses",
-      lessonStatus: 1
-    },
-    {
-      lessonName: "Aula 04- Feriados",
-      lessonStatus: 1
-    },
-    {
-      lessonName: "Aula 05 - Any",
-      lessonStatus: 2
-    },
-    {
-      lessonName: "Aula 06 - Words basics",
-      lessonStatus: 2
-    },
-    {
-      lessonName: "Aula 01 - Dias da semana",
-      lessonStatus: 0
-    },
-    {
-      lessonName: "Aula 02 - Números",
-      lessonStatus: 0
-    },
-    {
-      lessonName: "Aula 03 - Meses",
-      lessonStatus: 1
-    },
-    {
-      lessonName: "Aula 04- Feriados",
-      lessonStatus: 1
-    },
-    {
-      lessonName: "Aula 05 - Any",
-      lessonStatus: 2
-    },
-    {
-      lessonName: "Aula 06 - Words basics",
-      lessonStatus: 2
-    }
-  ];
+  
     if(lessons.length === 0){
       return(
         <PaperProvider theme={theme}>
@@ -136,19 +70,27 @@ export default function DetailsTopic({ navigation, route }) {
                     marginRight: 15,                         
                   }
                 }
-                source={{ uri: "https://conteudo.imguol.com.br/c/entretenimento/02/2018/07/20/leonard-nimoy-como-spock-na-serie-star-trek-1532124514829_v2_450x337.png" }}                      
+                source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgbsD_6ll7x2jHcON9dk0hv6D4ylcziQVItw&usqp=CAU" }}                      
               />
-              <Text style={styles.title}>Sejam bem vindo, LearnEnglish...</Text>
+              <Text style={styles.title}>{module.description}</Text>
             </View>            
             <View style={styles.module}>
               <Text style={styles.moduleTitle}>
-                Future
+                {module.title}
               </Text>
               <View>              
               {                
                   lessons.map((item,i) => {
                     return (
-                      <TouchableOpacity key={i} onPress={() => navigation.navigate('DetailsLesson', {id: item.id})}>
+                      <TouchableOpacity 
+                        key={i} 
+                        onPress={() => navigation.navigate('DetailsLesson', 
+                                  {
+                                    lessons: lessons, 
+                                    id: lessons.indexOf(item)
+                                  }
+                                )}
+                      >
                       <View style={styles.lesson}>
                        <Text style={styles.nameLesson}>{item.title}</Text>
                        <Text style={

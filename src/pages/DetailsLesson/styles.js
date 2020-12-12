@@ -24,11 +24,17 @@ const styles = StyleSheet.create({
     },
     button: {
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginHorizontal: 10,
+    },
+    buttonDisabled: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginHorizontal: 10,
+        opacity: 0.4
     },
     text: {
-        marginLeft: 10,
-
+        marginHorizontal: 5,
         fontFamily:"Roboto",
         fontStyle:"normal",
         fontWeight:"bold",
