@@ -22,10 +22,12 @@ export default function Home({ navigation, route }) {
   const [starter, setStarter] = useState([]);
   const [intermediate, setIntermediate] = useState([])
   const [advanced, setAdvanced] = useState([])
+  const [requisicao, setRequisicao] = useState([])
   useEffect(() => {
     async function carregarModulos(){
       const result = await Axios.get('https://api-learnenglish.herokuapp.com/modules')
       .then((res) => {
+        setRequisicao(res);
         setStarter(res.data.filter((item) => item.level === '0'))      
       setIntermediate(res.data.filter((item) => item.level === '1'))
       setAdvanced(res.data.filter((item) => item.level === '2'))      
@@ -34,33 +36,7 @@ export default function Home({ navigation, route }) {
     }
     carregarModulos();
   },[])
-  const data = [
-    {
-      imageUrl: "http://via.placeholder.com/160x160",
-      title: "something"
-    },
-    {
-      imageUrl: "http://via.placeholder.com/160x160",
-      title: "something two"
-    },
-    {
-      imageUrl: "http://via.placeholder.com/160x160",
-      title: "something three"
-    },
-    {
-      imageUrl: "http://via.placeholder.com/160x160",
-      title: "something four"
-    },
-    {
-      imageUrl: "http://via.placeholder.com/160x160",
-      title: "something five"
-    },
-    {
-      imageUrl: "http://via.placeholder.com/160x160",
-      title: "something six"
-    }
-  ];
-    if(starter.length === 0){
+  if(requisicao.length === 0){
       return(
         <PaperProvider theme={theme}>
           <Header navigation={navigation}>

@@ -4,14 +4,18 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'space-around',
         paddingHorizontal: 24,
         backgroundColor: '#14213D',
+    },
+    containerFormAndRegister: {
+        flex: 1,
+        justifyContent: 'space-between'
     },
     labelContainer: {
         marginBottom: 20
     },
     header: {
+        marginTop: 72,
         flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -28,6 +32,8 @@ const styles = StyleSheet.create({
         fontFamily: 'Roboto',
         fontStyle: 'normal',
         fontWeight: 'normal',
+        marginTop:24,
+        paddingHorizontal:24,
         fontSize: 14,
         lineHeight: 20,
         /* or 143% */
@@ -38,7 +44,7 @@ const styles = StyleSheet.create({
         letterSpacing: 0.03
     },
     input: {
-        marginTop: 18,
+        marginTop: 24,
         width: 246,
         height: 50,
         borderBottomWidth: 1,
@@ -55,7 +61,7 @@ const styles = StyleSheet.create({
         color: "#FFF"
     },
     button: {
-        marginTop: 18,
+        marginTop: 48,
         backgroundColor: '#07617D',
         borderRadius: 5,
         width: 246,
@@ -85,10 +91,20 @@ const styles = StyleSheet.create({
         alignItems: "center",
         color: "white",
     },
+    containeRegister: {     
+        paddingBottom: 24,
+        alignItems: "center",
+        color: "white",
+    },
     link: {
         textDecorationLine: "underline",
         fontWeight: 'bold',        
-    }
+    },
+    errorText: {
+        fontSize: 14,
+        color: 'white',
+        marginTop: 5
+    },
 
 }
 );

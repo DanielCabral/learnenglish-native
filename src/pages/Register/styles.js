@@ -1,20 +1,20 @@
 import {StyleSheet} from 'react-native';
-
+ 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'space-around',
-        paddingHorizontal: 24,
         backgroundColor: '#14213D',
     },
     labelContainer: {
         marginBottom: 20
     },
     header: {
-        flexDirection: 'row',
+        marginTop: 72,
+        flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
+        width: "100%",
         backgroundColor: '#14213D',
     },
     headerImage: {
@@ -25,6 +25,8 @@ const styles = StyleSheet.create({
         fontFamily: 'Roboto',
         fontStyle: 'normal',
         fontWeight: 'normal',
+        marginTop:24,
+        paddingHorizontal:24,
         fontSize: 14,
         lineHeight: 20,
         /* or 143% */
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
         letterSpacing: 0.03
     },
     input: {
-        marginTop: 18,
+        marginTop: 24,
         width: 246,
         height: 50,
         borderBottomWidth: 1,
@@ -52,7 +54,7 @@ const styles = StyleSheet.create({
         color: "#FFF"
     },
     button: {
-        marginTop: 18,
+        marginTop: 48,
         backgroundColor: '#07617D',
         borderRadius: 5,
         width: 246,
@@ -71,7 +73,11 @@ const styles = StyleSheet.create({
         textTransform: "uppercase",
         color: "#FFFFFF"
     },    
-
+    errorText: {
+        fontSize: 14,
+        color: 'white',
+        marginTop: 5
+      },
 }
 );
 export default styles;
