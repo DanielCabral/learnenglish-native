@@ -1,7 +1,6 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { View, Text, Image, Button, ActivityIndicator} from 'react-native';
-import { FlatList, ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import { View, Text, Image, Button, ActivityIndicator, FlatList, ScrollView, TouchableOpacity} from 'react-native';
 import { DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 import Header from '../../components/Header';
 import Level from '../../components/Home/Level';
@@ -24,12 +23,12 @@ export default function DetailsTopic({ navigation, route }) {
   
   useEffect(() => {
     async function carregarModulos(){          
-      const result = await Axios.get('http://10.0.2.2:3333/lesson/'+route.params.id)
+      const result = await Axios.get('http://10.0.2.2:3333/lesson/1')
       .then((res) => {        
         if(res.data.length > 0)
         setLessons(res.data)
       });     
-      await Axios.get('http://10.0.2.2:3333/module/'+route.params.id)
+      await Axios.get('http://10.0.2.2:3333/module/1')
       .then((res) => {        
         if(res.data.length > 0)
         setModule(res.data[0])
@@ -78,7 +77,7 @@ export default function DetailsTopic({ navigation, route }) {
               <Text style={styles.moduleTitle}>
                 {module.title}
               </Text>
-              <View>              
+              <View style={styles.lessonContainer}>              
               {                
                   lessons.map((item,i) => {
                     return (

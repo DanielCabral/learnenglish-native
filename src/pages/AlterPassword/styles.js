@@ -4,14 +4,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'space-around',
-        paddingHorizontal: 24,
         backgroundColor: '#14213D',
     },
     labelContainer: {
         marginBottom: 20
     },
     header: {
+        marginTop: 72,
         flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -32,6 +31,8 @@ const styles = StyleSheet.create({
         lineHeight: 20,
         /* or 143% */
 
+        marginTop:24,
+        paddingHorizontal:24,
         display: 'flex',
         alignItems: 'center',
         textAlign: 'center',

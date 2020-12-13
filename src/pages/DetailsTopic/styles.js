@@ -35,20 +35,26 @@ const styles = StyleSheet.create({
         lineHeight: 32,
         color: "#000000"
     },
-    lesson: {
-        width: "100%",
-        height: 20,
-        marginBottom: 16, 
-        flexDirection: "row",   
-        justifyContent: "space-between",            
+    lessonContainer: {       
+        //maxWidth: '100%',
+        //height: 20,
+        width:'100%',
+        marginBottom: 16,         
+        flexDirection: "column",  
+        //justifyContent: "space-between",            
     },
-    nameLesson: {
+    lesson: {
+        display: 'flex',
+        flexDirection: 'row', 
+        justifyContent: 'space-between'
+    },
+    nameLesson: {  
         fontFamily: "Roboto",
         fontStyle: "normal",
         fontWeight: "normal",
         fontSize: 14,
         lineHeight: 20,
-        justifyContent: "center", 
+
         color: "#000000",
         opacity: 0.8
     },

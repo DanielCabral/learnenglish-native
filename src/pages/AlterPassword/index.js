@@ -18,7 +18,7 @@ export default function AlterPassword() {
 
     return (
         <View style ={styles.container}>
-            <View>
+            <View style={styles.header}>
             <Image source={logoImg} styles={styles.headerImage}/>
 
             <Text style={styles.grettingsText}>Sejam bem vindo, LearnEnglish

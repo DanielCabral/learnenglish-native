@@ -20,14 +20,15 @@ import HomeAdmin from './pages/HomeAdmin';
 export default function Routes(){
     return (
         <NavigationContainer>
+            
             <AppStack.Navigator screenOptions={{headerShown: false }}>                        
+            <AppStack.Screen name = "DetailsTopic" component={DetailsTopic}/>
             <AppStack.Screen name = "Login" component={Login}/>
             <AppStack.Screen name = "Home" component={Home}/>
             <AppStack.Screen name = "Register" component={Register}/>
             <AppStack.Screen name = "AlterPassword" component={AlterPassword}/>
             <AppStack.Screen name = "RecoverPassword" component={RecoverPassword}/>
-            <AppStack.Screen name = "Profile" component={Profile}/>
-            <AppStack.Screen name = "DetailsTopic" component={DetailsTopic}/>
+            <AppStack.Screen name = "Profile" component={Profile}/>            
             <AppStack.Screen name = "Player" component={Player}/>
             <AppStack.Screen name = "DetailsLesson" component={DetailsLesson}/>
             <AppStack.Screen name = "Search" component={Search}/>

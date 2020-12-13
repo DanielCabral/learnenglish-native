@@ -19,7 +19,7 @@ export default function PasswordRecover() {
 
     return (
         <View style ={styles.container}>
-            <View>
+            <View style={styles.header}>
             <Image source={logoImg} styles={styles.headerImage}/>
 
             <Text style={styles.grettingsText}>Preencha os campo para validar seus dados e recuperar seu acesso.</Text>            
@@ -28,7 +28,7 @@ export default function PasswordRecover() {
             <TextInput
             style={styles.input}
             //onChangeText={text => onChangeText(text)}
-            placeholder = 'Digite seu e-mail ou telefone'
+            placeholder = 'Digite seu e-mail'
             placeholderTextColor="#FFF" 
             value={''}
             />        
