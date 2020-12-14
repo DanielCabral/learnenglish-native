@@ -10,6 +10,8 @@ import Register from './pages/Register';
 import RecoverPassword from './pages/PasswordRecover';
 import AlterPassword from './pages/AlterPassword';
 import Profile from './pages/Profile';
+import Module from './pages/Module';
+import Lesson from './pages/Lesson';
 import DetailsTopic from './pages/DetailsTopic';
 import DetailsLesson from './pages/DetailsLesson';
 import Player from './pages/Player';
@@ -22,6 +24,8 @@ export default function Routes(){
         <NavigationContainer>
             
             <AppStack.Navigator screenOptions={{headerShown: false }}>                        
+            <AppStack.Screen name = "Lesson" component={Lesson} />                       
+            <AppStack.Screen name = "Module" component={Module} />            
             <AppStack.Screen name = "DetailsTopic" component={DetailsTopic}/>
             <AppStack.Screen name = "Login" component={Login}/>
             <AppStack.Screen name = "Home" component={Home}/>

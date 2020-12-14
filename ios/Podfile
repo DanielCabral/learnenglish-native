@@ -17,6 +17,8 @@ target 'mobile' do
   use_flipper!
   pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
 
+  pod 'RNCPicker', :path => '../node_modules/@react-native-picker/picker'
+
   post_install do |installer|
     flipper_post_install(installer)
   end
