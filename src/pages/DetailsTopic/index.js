@@ -69,7 +69,7 @@ export default function DetailsTopic({ navigation, route }) {
                     marginRight: 15,                         
                   }
                 }
-                source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgbsD_6ll7x2jHcON9dk0hv6D4ylcziQVItw&usqp=CAU" }}                      
+                source={{ uri: module.image }}                      
               />
               <Text style={styles.title}>{module.description}</Text>
             </View>            
