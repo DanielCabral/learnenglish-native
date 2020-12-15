@@ -1,145 +1,233 @@
-// import React in our code
-import React, {useState, useRef} from 'react';
+'use strict';
 
-// import all the components we are going to use
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import React, {
+  Component
+} from 'react';
 
-//Import React Native Video to play video
+import {
+  AppRegistry,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+
 import Video from 'react-native-video';
 
-//Media Controls to control Play/Pause/Seek and full screen
-import
-  MediaControls, {PLAYER_STATES}
-from 'react-native-media-controls';
+export default class Player extends Component {
 
-const Player = ({route}) => {  
-  const videoPlayer = useRef(null);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const [isFullScreen, setIsFullScreen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [paused, setPaused] = useState(false);
-  const [
-    playerState, setPlayerState
-  ] = useState(PLAYER_STATES.PLAYING);
-  const [screenType, setScreenType] = useState('content');
-
-  const onSeek = (seek) => {
-    //Handler for change in seekbar
-    videoPlayer.current.seek(seek);
+  state = {
+    rate: 1,
+    volume: 1,
+    muted: false,
+    resizeMode: 'contain',
+    duration: 0.0,
+    currentTime: 0.0,
+    paused: false,
   };
 
-  const onPaused = (playerState) => {
-    //Handler for Video Pause
-    setPaused(!paused);
-    setPlayerState(playerState);
+  video: Video;
+
+  onLoad = (data) => {
+    this.setState({ duration: data.duration });
   };
 
-  const onReplay = () => {
-    //Handler for Replay
-    setPlayerState(PLAYER_STATES.PLAYING);
-    videoPlayer.current.seek(0);
+  onProgress = (data) => {
+    this.setState({ currentTime: data.currentTime });
   };
 
-  const onProgress = (data) => {
-    // Video Player will progress continue even if it ends
-    if (!isLoading && playerState !== PLAYER_STATES.ENDED) {
-      setCurrentTime(data.currentTime);
+  onEnd = () => {
+    this.setState({ paused: true })
+    this.video.seek(0)
+  };
+
+  onAudioBecomingNoisy = () => {
+    this.setState({ paused: true })
+  };
+
+  onAudioFocusChanged = (event: { hasAudioFocus: boolean }) => {
+    this.setState({ paused: !event.hasAudioFocus })
+  };
+
+  getCurrentTimePercentage() {
+    if (this.state.currentTime > 0) {
+      return parseFloat(this.state.currentTime) / parseFloat(this.state.duration);
     }
+    return 0;
   };
 
-  const onLoad = (data) => {
-    setDuration(data.duration);
-    setIsLoading(false);
-  };
+  renderRateControl(rate) {
+    const isSelected = (this.state.rate === rate);
 
-  const onLoadStart = (data) => setIsLoading(true);
+    return (
+      <TouchableOpacity onPress={() => { this.setState({ rate }) }}>
+        <Text style={[styles.controlOption, { fontWeight: isSelected ? 'bold' : 'normal' }]}>
+          {rate}x
+        </Text>
+      </TouchableOpacity>
+    );
+  }
 
-  const onEnd = () => setPlayerState(PLAYER_STATES.ENDED);
+  renderResizeModeControl(resizeMode) {
+    const isSelected = (this.state.resizeMode === resizeMode);
 
-  const onError = () => alert('Oh! ', error);
+    return (
+      <TouchableOpacity onPress={() => { this.setState({ resizeMode }) }}>
+        <Text style={[styles.controlOption, { fontWeight: isSelected ? 'bold' : 'normal' }]}>
+          {resizeMode}
+        </Text>
+      </TouchableOpacity>
+    )
+  }
 
-  const exitFullScreen = () => {
-    alert('Exit full screen');
-  };
+  renderVolumeControl(volume) {
+    const isSelected = (this.state.volume === volume);
 
-  const enterFullScreen = () => {};
+    return (
+      <TouchableOpacity onPress={() => { this.setState({ volume }) }}>
+        <Text style={[styles.controlOption, { fontWeight: isSelected ? 'bold' : 'normal' }]}>
+          {volume * 100}%
+        </Text>
+      </TouchableOpacity>
+    )
+  }
 
-  const noop = () => {
-    setIsFullScreen(isFullScreen);
-    if (screenType == 'content') setScreenType('cover');
-    else setScreenType('content');
-  };
+  render() {
+    const flexCompleted = this.getCurrentTimePercentage() * 100;
+    const flexRemaining = (1 - this.getCurrentTimePercentage()) * 100;
 
-  const renderToolbar = () => (
-    <View>
-      <Text style={styles.toolbar}> toolbar </Text>
-    </View>
-  );
+    return (
+      <View style={styles.container}>
+        <TouchableOpacity
+          style={styles.fullScreen}
+          onPress={() => this.setState({ paused: !this.state.paused })}
+        >
+          <Video
+            ref={(ref: Video) => { this.video = ref }}
+            /* For ExoPlayer */
+            //source={{ uri: 'http://www.youtube.com/api/manifest/dash/id/bf5bb2419360daf1/source/youtube?as=fmp4_audio_clear,fmp4_sd_hd_clear&sparams=ip,ipbits,expire,source,id,as&ip=0.0.0.0&ipbits=0&expire=19000000000&signature=51AF5F39AB0CEC3E5497CD9C900EBFEAECCCB5C7.8506521BFC350652163895D4C26DEE124209AA9E&key=ik0', type: 'mpd' }} 
+            isFullScreen={true}
+            source={ {uri: this.props.route.params.uri}}
+            style={styles.fullScreen}
+            rate={this.state.rate}
+            paused={this.state.paused}
+            volume={this.state.volume}
+            muted={this.state.muted}
+            resizeMode={'cover'}
+            onLoad={this.onLoad}
+            onProgress={this.onProgress}
+            onEnd={this.onEnd}
+            onAudioBecomingNoisy={this.onAudioBecomingNoisy}
+            onAudioFocusChanged={this.onAudioFocusChanged}
+            repeat={false}         
+            rotation={90}              
+          />         
+        </TouchableOpacity>
 
-  const onSeeking = (currentTime) => setCurrentTime(currentTime);
+        <View style={styles.controls}>
+          <View style={styles.generalControls}>
+            <View style={styles.rateControl}>
+              {this.renderRateControl(0.25)}
+              {this.renderRateControl(0.5)}
+              {this.renderRateControl(1.0)}
+              {this.renderRateControl(1.5)}
+              {this.renderRateControl(2.0)}
+            </View>
 
-  return (
-    <View style={{flex: 1}}>
-      <Video
-        onEnd={onEnd}
-        onLoad={onLoad}
-        onLoadStart={onLoadStart}
-        onProgress={onProgress}
-        paused={paused}
-        ref={videoPlayer}
-        resizeMode={screenType}
-        isFullScreen={true}
-        onFullScreen={isFullScreen}
-         fullscreen={true}
-        resizeMode="contain"
-        paused = {true}
-        source={{
-          uri:
-          //Adaptative livestreaming
-          route.params.uri
-            //https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8',
-        }}
-        style={styles.mediaPlayer}
-        volume={10}
-      />
-      <MediaControls
-        duration={duration}
-        isLoading={isLoading}
-        mainColor="#333"       
-        onFullScreen={noop}
-        onPaused={onPaused}
-        onReplay={onReplay}
-        onSeek={onSeek}
-        onSeeking={onSeeking}
-        playerState={playerState}
-        progress={currentTime}
-        toolbar={renderToolbar()}
-      />
-    </View>
-  );
-};
+            <View style={styles.volumeControl}>
+              {this.renderVolumeControl(0.5)}
+              {this.renderVolumeControl(1)}
+              {this.renderVolumeControl(1.5)}
+            </View>
+          </View>
 
-export default Player;
+          <View style={styles.trackingControls}>
+            <View style={styles.progress}>
+              <View style={[styles.innerProgressCompleted, { flex: flexCompleted }]} />
+              <View style={[styles.innerProgressRemaining, { flex: flexRemaining }]} />
+            </View>
+          </View>
+        </View>
+      </View>
+    );
+  }
+}
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    //flexDirection:'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'black',
   },
-  toolbar: {
-    marginTop: 30,
-    backgroundColor: 'white',
-    padding: 10,
-    borderRadius: 5,
-  },
-  mediaPlayer: {
-    flex: 1,
+  fullScreen: {
     position: 'absolute',
+    //  transform : [
+    //     {
+    //       scale : 1
+    //     }
+    //   ],
+    //rotation: 45,
     top: 0,
     left: 0,
     bottom: 0,
     right: 0,
-    backgroundColor: 'black',
+  },
+  controls: {
+    backgroundColor: 'transparent',
+    borderRadius: 5,
+    position: 'absolute',
+    bottom: 20,
+    left: 20,
+    right: 20,
+  },
+  progress: {
+    display: 'none',
+    flexDirection: 'row',
+    borderRadius: 3,
+    overflow: 'hidden',
+  },
+  innerProgressCompleted: {
+    height: 20,
+    backgroundColor: '#cccccc',
+  },
+  innerProgressRemaining: {
+    height: 20,
+    backgroundColor: '#2C2C2C',
+  },
+  generalControls: {
+    flex: 1,
+    flexDirection: 'row',
+    borderRadius: 4,
+    overflow: 'hidden',
+    paddingBottom: 10,
+  },
+  rateControl: {
+    flex: 1,
+    flexDirection: 'row',
     justifyContent: 'center',
+  },
+  volumeControl: {
+    flex: 1,
+    //display:"none",
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  resizeModeControl: {
+    flex: 1,
+    display:"none",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  controlOption: {
+    alignSelf: 'center',
+    fontSize: 11,
+    color: 'white',
+    paddingLeft: 2,
+    paddingRight: 2,
+    lineHeight: 12,
   },
 });
