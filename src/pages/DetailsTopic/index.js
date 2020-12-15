@@ -122,7 +122,7 @@ export default function DetailsTopic({ navigation, route }) {
             style={styles.fab}
             small
             icon="plus"
-            onPress={() => navigation.navigate("Lesson")}
+            onPress={() => navigation.navigate("Lesson", {module})}
           />
       </PaperProvider>
     )

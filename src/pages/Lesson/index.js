@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, TouchableOpacity, Text, ImageBackground, Image, ScrollView, Picker} from 'react-native';
 //import Picker from '@react-native-picker/picker';
 import { Feather } from '@expo/vector-icons'; 
@@ -17,20 +17,32 @@ import { Formik } from 'formik';
 
 const loginValidationSchema = yup.object().shape({
   title: yup
-    .string()
-    .email("Por favor, digite um email valido")
+    .string()    
     .required('Campo obrigatório'),
   description: yup
-    .string()
-    .min(6, ({ min }) => `A senha deve conter no minimo ${min} caracteres`)
+    .string()    
     .required('Campo obrigatório'),
-    level: yup
+    module: yup
     .string()    
     .required('Campo obrigatório'),
 });
 
-export default function Lesson({ navigation }) {
+export default function Lesson({ navigation, route }) {
   const [avatar, setAvatar] = useState();
+  const [modules, setModules] = useState([]);
+
+  useEffect(() => {
+    async function carregarModulos(){                 
+      await Axios.get('http://192.168.0.109:3333/modules/' + route.params.module.user_id)
+      .then((res) => {        
+        if(res.data.length > 0){            
+          setModules(res.data);
+        }
+      })
+      .catch(err => alert('Erro no cadastro'));           
+    }
+    carregarModulos();
+  },[])
 
   const imagePickerOptions = {
     title: 'Escolha um video', 
@@ -76,6 +88,35 @@ export default function Lesson({ navigation }) {
     //await Axios.post('http://localhost:3333/files', data);
   }
 
+  async function saveModule(values){
+    alert(JSON.stringify(values))
+    const data = {
+      title: values.title, 
+      description: values.description, 
+      link: "https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8", 
+      id_module: values.module,
+      thumbnail: "https://i2.wp.com/www.hisour.com/wp-content/uploads/2017/09/US-Capitol.jpg?fit=1061%2C640&ssl=1",
+      id_user: route.params.module.user_id
+    }
+    await Axios.post("http://192.168.0.109:3333/lessons",data)
+    .then(() => {   
+              /*Axios({
+              url    : 'https://api-learnenglish.herokuapp.com/lesson/',
+              method : 'POST',
+              data   : formData,
+              headers: {
+                           Accept: 'application/json',
+                           'Content-Type': 'multipart/form-data',
+                           'Authorization':'Basic YnJva2VyOmJyb2tlcl8xMjM='
+                       }
+                   })*/
+
+              alert('Cadastro efetuado com sucesso');      
+              navigation.goBack();            
+          })
+    .catch(err => alert('Erro no cadastro'));
+  };
+
   return (
     <View style={{backgroundColor: "#F4F6F8"}}>      
       <ScrollView>
@@ -108,8 +149,8 @@ export default function Lesson({ navigation }) {
         
         <Formik
               validationSchema={loginValidationSchema}
-              initialValues={{ title: '', description: '', level: '', }}
-              onSubmit={values => navigateToHome(values)}
+              initialValues={{ title: '', description: '', module: '', }}
+              onSubmit={values => saveModule(values)}
             >
               {({ handleChange, handleBlur, handleSubmit, errors, touched, isValid,values }) => 
                 (
@@ -144,30 +185,25 @@ export default function Lesson({ navigation }) {
                         }
 
             <Picker
-              selectedValue={values.level}
+              selectedValue={values.module}
               style={{ height: 50, width: 150 }}
-              onValueChange={handleChange('level')}
+              onValueChange={handleChange('module')}
             >
-              <Picker.Item label="" value="" />
-              <Picker.Item label="Iniciante" value="Iniciante" />
-              <Picker.Item label="Intermediario" value="Intermediario" />
-              <Picker.Item label="Avançado" value="Avançado" />
+            <Picker.Item label="-- Selecione um valor --" value="" />
+            {
+              modules.map((item,i) => {
+                return (
+                 
+                  <Picker.Item key={i} label={item.title} value={""+item.id} />
+                );
+              })
+            }
+              
             </Picker>
-            {(errors.level && touched.level) &&
-                          <Text style={styles.errorText}>{errors.level}</Text>
+            {(errors.module && touched.module) &&
+                          <Text style={styles.errorText}>{errors.module}</Text>
                         }
-          <TouchableOpacity style={styles.button} onPress={()=> {
-            Axios({
-              url    : 'https://api-learnenglish.herokuapp.com/lesson/',
-              method : 'POST',
-              data   : formData,
-              headers: {
-                           Accept: 'application/json',
-                           'Content-Type': 'multipart/form-data',
-                           'Authorization':'Basic YnJva2VyOmJyb2tlcl8xMjM='
-                       }
-                   })
-          }}>
+          <TouchableOpacity style={styles.button} onPress={handleSubmit}>
             <Text style={styles.buttonText}>Salvar</Text>                
           </TouchableOpacity>
           

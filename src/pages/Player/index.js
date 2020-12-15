@@ -12,7 +12,7 @@ import
   MediaControls, {PLAYER_STATES}
 from 'react-native-media-controls';
 
-const Player = ({route}) => {
+const Player = ({route}) => {  
   const videoPlayer = useRef(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -91,11 +91,14 @@ const Player = ({route}) => {
         resizeMode={screenType}
         isFullScreen={true}
         onFullScreen={isFullScreen}
+         fullscreen={true}
+        resizeMode="contain"
+        paused = {true}
         source={{
           uri:
           //Adaptative livestreaming
-          'https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8'
-            //'https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8',
+          route.params.uri
+            //https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8',
         }}
         style={styles.mediaPlayer}
         volume={10}
@@ -103,8 +106,7 @@ const Player = ({route}) => {
       <MediaControls
         duration={duration}
         isLoading={isLoading}
-        mainColor="#333"
-        isFullScreen={true}
+        mainColor="#333"       
         onFullScreen={noop}
         onPaused={onPaused}
         onReplay={onReplay}

@@ -12,8 +12,7 @@ import Axios from 'axios';
 
 export default function DetailsLesson({ navigation , route }) {
 
-    const idLesson =  route.params.id ;
-    alert(idLesson);
+    const idLesson =  route.params.id ;    
     const lessons = route.params.lessons;
 
     const atualLesson = lessons[idLesson];
@@ -33,7 +32,7 @@ export default function DetailsLesson({ navigation , route }) {
                 }
                 source={{ uri: atualLesson.thumbnail}}                      
               >
-                    <TouchableOpacity onPress={() => navigation.navigate('Player',{uri: lesson.link}) }> 
+                    <TouchableOpacity onPress={() => navigation.navigate('Player',{uri: atualLesson.link}) }> 
                         <Image source={play}/>
                     </TouchableOpacity>
               </ImageBackground>
