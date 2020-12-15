@@ -1,12 +1,14 @@
 import React from 'react'
 import { Feather } from '@expo/vector-icons';
-import { Image, Text, View } from 'react-native';
+import { Alert, Image, Text, View } from 'react-native';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 
 
 import styles from './styles';
+import Axios from 'axios';
 
-export default function Level({ navigation, data, title, admin, id}) {
+export default function Level({ deletarmodulo, navigation, data, title, admin, id}) {
+  
     return (
         <View style={styles.level}>
         <Text style={styles.levelTitle}>
@@ -29,7 +31,7 @@ export default function Level({ navigation, data, title, admin, id}) {
             if( index === 0 && admin){
               return(
                 <View style={styles.module}>
-              <TouchableOpacity onPress={() => alert("Add")}>
+              <TouchableOpacity onPress={() => navigation.navigate('Module')}>
               <View
                 style={
                   {
@@ -60,7 +62,7 @@ export default function Level({ navigation, data, title, admin, id}) {
               <TouchableOpacity onPress={() => navigation.navigate('DetailsTopic', {id: item.id})}
                 onLongPress={() => {
                   if(admin)
-                    alert('Delete')
+                    deletarmodulo(item.id, item.level);
                 }}
               >
               <Image

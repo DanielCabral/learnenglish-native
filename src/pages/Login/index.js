@@ -27,8 +27,8 @@ export default function Login({ navigation}) {
 
     async function navigateToHome(values){
       values = {
-        email: 'daniel@gmail.com',
-        password: '1234568'
+        email: 'jeciane@gmail.com',
+        password: '123456'
       }                  
         await Axios.post('http://10.0.2.2:3333/auth', values)
         .then((result) => {           

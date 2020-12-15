@@ -78,7 +78,11 @@ const styles = StyleSheet.create({
         textTransform: "uppercase",
         color: "#FFFFFF"
     },
-
+    errorText: {
+        fontSize: 14,
+        color: 'white',
+        marginTop: 5
+    },
 }
 );
 export default styles;

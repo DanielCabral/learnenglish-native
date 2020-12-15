@@ -24,10 +24,10 @@ export default function Routes(){
         <NavigationContainer>
             
             <AppStack.Navigator screenOptions={{headerShown: false }}>                        
+            <AppStack.Screen name = "Login" component={Login}/>
             <AppStack.Screen name = "Lesson" component={Lesson} />                       
             <AppStack.Screen name = "Module" component={Module} />            
-            <AppStack.Screen name = "DetailsTopic" component={DetailsTopic}/>
-            <AppStack.Screen name = "Login" component={Login}/>
+            <AppStack.Screen name = "DetailsTopic" component={DetailsTopic}/>            
             <AppStack.Screen name = "Home" component={Home}/>
             <AppStack.Screen name = "Register" component={Register}/>
             <AppStack.Screen name = "AlterPassword" component={AlterPassword}/>
