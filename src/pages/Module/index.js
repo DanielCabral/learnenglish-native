@@ -10,7 +10,7 @@ import Axios from 'axios';
 
 import styles from './styles.js';
 
-import Header from '../../components/Header'; 
+import Header from '../../components/HeaderNoSearch'; 
 
 import * as yup from 'yup'
 import { Formik } from 'formik';

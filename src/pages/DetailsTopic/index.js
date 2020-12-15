@@ -1,5 +1,6 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { FAB } from 'react-native-paper';
 import { View, Text, Image, Button, ActivityIndicator, FlatList, ScrollView, TouchableOpacity} from 'react-native';
 import { DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 import Header from '../../components/Header';
@@ -7,7 +8,7 @@ import Level from '../../components/Home/Level';
 
 const theme = {
   ...DefaultTheme,
-  roundness: 2,
+  roundness: 2, 
   colors: {
     ...DefaultTheme.colors,
     primary: '#14213D',
@@ -23,12 +24,12 @@ export default function DetailsTopic({ navigation, route }) {
   
   useEffect(() => {
     async function carregarModulos(){          
-      const result = await Axios.get('https://api-learnenglish.herokuapp.com/lesson/1')
+      const result = await Axios.get('https://api-learnenglish.herokuapp.com/lesson/'+route.params.id)
       .then((res) => {        
         if(res.data.length > 0)
         setLessons(res.data)
       });     
-      await Axios.get('https://api-learnenglish.herokuapp.com/module/1')
+      await Axios.get('https://api-learnenglish.herokuapp.com/module/'+route.params.id)
       .then((res) => {        
         if(res.data.length > 0)
         setModule(res.data[0])
@@ -117,6 +118,12 @@ export default function DetailsTopic({ navigation, route }) {
             </View>            
           </View>
           </ScrollView>
+           <FAB
+            style={styles.fab}
+            small
+            icon="plus"
+            onPress={() => navigation.navigate("Lesson")}
+          />
       </PaperProvider>
     )
     }

@@ -69,7 +69,7 @@ export default function Login({ navigation}) {
            <View style={styles.containerFormAndRegister}>
             <Formik
               validationSchema={loginValidationSchema}
-              initialValues={{ email: '', password: ''}}
+              initialValues={{ email: 'jec@gmail.com', password: '123456'}}
               onSubmit={values => navigateToHome(values)}
             >
               {({ handleChange, handleBlur, handleSubmit, errors, touched, isValid,values }) => 

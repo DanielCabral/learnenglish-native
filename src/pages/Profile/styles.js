@@ -29,9 +29,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#000",
 
-    fontFamily: "Source Sans Pro",
-    fontStyle: "normal",
-    fontWeight: "normal",
+    fontFamily: "Roboto-Regular",
     fontSize: 17,
     backgroundColor:"#F4F6F8",  
     lineHeight: 21,
@@ -50,9 +48,7 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-      fontFamily: "Source Sans Pro",
-      fontStyle: "normal",
-      fontWeight: "bold",
+      fontFamily: "Roboto-Bold",
       fontSize: 20,
       lineHeight: 25,
       textTransform: "uppercase",

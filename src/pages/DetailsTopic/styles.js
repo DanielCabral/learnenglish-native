@@ -13,9 +13,7 @@ const styles = StyleSheet.create({
     },
     title:{
         marginTop: 18,
-        fontFamily: 'Roboto',
-        fontStyle: 'normal',
-        fontWeight: 'normal',
+        fontFamily: 'Roboto-Regular',
         fontSize: 14,
         lineHeight: 20,
         letterSpacing: 0.03
@@ -29,17 +27,24 @@ const styles = StyleSheet.create({
     moduleTitle: {
         height: 32,
 
-        fontFamily: "Pacifico-Regular",
+        fontFamily: "Roboto-Regular",
         
-        fontSize: 18,
+        fontSize: 22,
+        marginBottom: 18,
         lineHeight: 32,
         color: "#000000"
+    },
+    fab: {
+        position: 'absolute',
+        margin: 16,
+        right: 0,
+        bottom: 0,
     },
     lessonContainer: {       
         //maxWidth: '100%',
         //height: 20,
         width:'100%',
-        marginBottom: 16,         
+        marginBottom: 24,         
         flexDirection: "column",  
         //justifyContent: "space-between",            
     },
@@ -49,20 +54,17 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     nameLesson: {  
-        fontFamily: "Roboto",
-        fontStyle: "normal",
-        fontWeight: "normal",
-        fontSize: 14,
+        fontFamily: "Roboto-Regular",
+        fontSize: 16,
         lineHeight: 20,
-
+        marginBottom: 18,
         color: "#000000",
         opacity: 0.8
     },
     statusLesson: {
-        fontFamily: "Roboto",
-        fontStyle: "normal",
-        fontWeight: "bold",
-        fontSize: 14,
+        fontFamily: "Roboto-Bold",
+        fontSize: 16,
+        marginBottom: 18,
         lineHeight: 20,
         color: "#0BAC4C"
     },

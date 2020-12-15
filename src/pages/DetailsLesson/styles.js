@@ -35,9 +35,7 @@ const styles = StyleSheet.create({
     },
     text: {
         marginHorizontal: 5,
-        fontFamily:"Roboto",
-        fontStyle:"normal",
-        fontWeight:"bold",
+        fontFamily:"Roboto-Bold",
         fontSize:12,
         lineHeight: 14,
         color:"#FFFFFF"
@@ -59,9 +57,7 @@ const styles = StyleSheet.create({
     },
     title: {
 
-        fontFamily: "Roboto",
-        fontStyle: "normal",
-        fontWeight: "bold",
+        fontFamily: "Roboto-Bold",
         fontSize: 12,
         lineHeight: 14,
         color: "#FFFFFF" 
@@ -75,9 +71,7 @@ const styles = StyleSheet.create({
     textDescription: {
         marginTop: 10,
 
-        fontFamily: "Roboto",
-        fontStyle: "normal",
-        fontWeight: "normal",
+        fontFamily: "Roboto-Regular",
         fontSize: 10,
         lineHeight: 14,
         display: "flex",

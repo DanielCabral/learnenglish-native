@@ -22,9 +22,7 @@ const styles = StyleSheet.create({
     },
     grettingsText: {
         color: '#FFF',
-        fontFamily: 'Roboto',
-        fontStyle: 'normal',
-        fontWeight: 'normal',
+        fontFamily: 'Roboto-Regular',
         marginTop:24,
         paddingHorizontal:24,
         fontSize: 14,
@@ -44,9 +42,7 @@ const styles = StyleSheet.create({
         borderBottomColor: 'white',
         opacity: 0.98,
 
-        fontFamily: "Source Sans Pro",
-        fontStyle: "normal",
-        fontWeight: "normal",
+        fontFamily: "Roboto-Regular",
         fontSize: 17,
         lineHeight: 21,
         display: "flex",
@@ -65,9 +61,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     buttonText: {
-        fontFamily: "Source Sans Pro",
-        fontStyle: "normal",
-        fontWeight: "bold",
+        fontFamily: "Roboto-Bold",
         fontSize: 20,
         lineHeight: 25,
         textTransform: "uppercase",

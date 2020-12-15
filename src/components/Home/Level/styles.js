@@ -7,17 +7,13 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start'      
     },
     levelTitle: {
-        fontFamily: "Pacifico-Regular",
-        fontStyle: "normal",
-        fontWeight: "normal",
+        fontFamily: "Roboto-Bold",
         fontSize: 18,
         lineHeight: 32,
         color: "#000000"
     },
     levelSubTitle: {
-        fontFamily: "Roboto",
-        fontStyle: "normal",
-        fontWeight: "normal",
+        fontFamily: "Roboto-Regular",
         fontSize: 14,
         lineHeight: 20
     },

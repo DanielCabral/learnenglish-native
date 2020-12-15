@@ -74,7 +74,7 @@ export default function Level({ deletarmodulo, navigation, data, title, admin, i
                     marginRight: 15,                         
                   }
                 }
-                source={{ uri: "https://conteudo.imguol.com.br/c/entretenimento/02/2018/07/20/leonard-nimoy-como-spock-na-serie-star-trek-1532124514829_v2_450x337.png" }}                      
+                source={{ uri: item.image}}                      
               />
               </TouchableOpacity>
                <Text style={{ marginRight: 15, marginTop: 3 }}>
