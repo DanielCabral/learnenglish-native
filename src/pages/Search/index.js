@@ -22,7 +22,7 @@ export default function Search({ navigation, route }) {
   const [lessons, setLessons] = useState([])
   useEffect(() => {
     async function carregarModulos(){          
-      const result = await Axios.get('http://10.0.2.2:3333/searchlesson/'+route.params.search)
+      const result = await Axios.get('https://api-learnenglish.herokuapp.com/earchlesson/'+route.params.search)
       .then((res) => {        
         if(res.data.length > 0)
         setLessons(res.data)        

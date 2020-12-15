@@ -32,7 +32,7 @@ export default function PasswordRecover() {
         values = {
           email: 'jeciane@gmail.com',          
         }                  
-          await Axios.post('http://10.0.2.2:3333/forgotpassword', values)
+          await Axios.post('https://api-learnenglish.herokuapp.com/forgotpassword', values)
           .then((result) => {           
               if(result.status === 200)              
                 navigation.navigate('AlterPassword', {email: values.email});              

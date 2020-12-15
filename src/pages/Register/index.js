@@ -35,7 +35,7 @@ const registerValidationSchema = yup.object().shape({
 export default function Register({ navigation}) {
 
     async function navigateToLogin(values){          
-          await Axios.post('http://10.0.2.2:3333/user', values)
+          await Axios.post('https://api-learnenglish.herokuapp.com/user', values)
           .then(() => {   
               alert('Cadastro efetuado com sucesso');      
               navigation.navigate('Login');            

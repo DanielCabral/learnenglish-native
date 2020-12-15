@@ -150,7 +150,7 @@ export default function Module({ navigation }) {
                         }
           <TouchableOpacity style={styles.button} onPress={()=> {
             Axios({
-              url    : 'http://10.0.2.2:3333/lesson/',
+              url    : 'https://api-learnenglish.herokuapp.com/lesson/',
               method : 'POST',
               data   : formData,
               headers: {

@@ -52,7 +52,7 @@ export default function HomeAdmin({ navigation, route }) {
           style: "cancel"
         },
         { text: "OK", onPress: async () => {          
-          const response = await Axios.delete("http://10.0.2.2:3333/module/"+id)
+          const response = await Axios.delete("https://api-learnenglish.herokuapp.com/module/"+id)
           .then(result => {            
             if(level == 0){              
               setStarter(starter.filter(item => item.id !== id));

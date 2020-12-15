@@ -31,7 +31,7 @@ export default function AlterPassword({ navigation, route }) {
           password: '123456',          
           token: values.token
         }                  
-          await Axios.post('http://10.0.2.2:3333/resetpassword', values)
+          await Axios.post('https://api-learnenglish.herokuapp.com/resetpassword', values)
           .then((result) => {           
               if(result.status === 200){              
                 alert('Senha alterada com sucesso');                               

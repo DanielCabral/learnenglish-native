@@ -23,12 +23,12 @@ export default function DetailsTopic({ navigation, route }) {
   
   useEffect(() => {
     async function carregarModulos(){          
-      const result = await Axios.get('http://10.0.2.2:3333/lesson/1')
+      const result = await Axios.get('https://api-learnenglish.herokuapp.com/lesson/1')
       .then((res) => {        
         if(res.data.length > 0)
         setLessons(res.data)
       });     
-      await Axios.get('http://10.0.2.2:3333/module/1')
+      await Axios.get('https://api-learnenglish.herokuapp.com/module/1')
       .then((res) => {        
         if(res.data.length > 0)
         setModule(res.data[0])

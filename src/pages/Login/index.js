@@ -30,7 +30,7 @@ export default function Login({ navigation}) {
         email: 'jeciane@gmail.com',
         password: '123456'
       }                  
-        await Axios.post('http://10.0.2.2:3333/auth', values)
+        await Axios.post('https://api-learnenglish.herokuapp.com/auth', values)
         .then((result) => {           
             if(result.data.type === 0)              
               navigation.navigate('Home');              
